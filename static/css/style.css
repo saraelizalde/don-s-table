@@ -1,0 +1,224 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=WindSong:wght@400;500&display=swap');
+
+/* CSS Variables */
+:root {
+    --hot-pink: #FF41B4;
+    --primary-font: 'Quicksand', sans-serif;
+    --secondary-font: 'Noto Serif Display', serif;
+    --accent-font: 'WindSong', cursive;
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: var(--primary-font);
+    background-color: white;
+}
+
+h1 {
+    font-family: var(--accent-font);
+    font-size: 6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 8vw, 5rem);
+}
+
+h2 {
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    font-size: clamp(1.4rem, 4vw, 2.5rem);
+    /* min, ideal, max */
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    /* improves readability in caps */
+}
+
+/* Hero Wrapper with Background Image */
+.hero-wrapper {
+    background-image: url('../images/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    width: 100%;
+}
+
+/* Header Layout */
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Logo */
+.logo {
+    margin: 0;
+}
+
+header .logo img {
+    width: 90px;
+    max-width: 90px;
+    height: auto;
+    display: block;
+}
+
+/* Navigation Menu (Desktop) */
+.nav-wrapper {
+    display: block;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--secondary-font);
+    transition: transform 0.1s ease;
+    display: inline-block;
+}
+
+.nav-menu li a:hover {
+    transform: scale(1.05);
+}
+
+/* Hamburger Menu Button (Hidden by Default) */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    padding: 1rem 1rem 1rem;
+    text-align: center;
+}
+
+.hero-text {
+    padding: 0 2rem;
+}
+
+/* Call to Action */
+.cta {
+    padding: 2rem;
+    text-align: center;
+}
+
+.cta button {
+    font-family: var(--secondary-font);
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 262px;
+}
+
+.cta button:hover {
+    transform: scale(1.05);
+}
+
+/* White Section (General Content) */
+.white-section {
+    background: white;
+    padding: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Tablet Style Adjustments */
+@media (max-width: 768px) {
+    header {
+        background: white;
+        color: black;
+    }
+
+    .nav-menu li a {
+        color: black;
+    }
+
+    .menu-toggle {
+        color: black;
+    }
+}
+
+/* Mobile Styles (Collapse Nav at 600px)*/
+@media (max-width: 600px) {
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-wrapper {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition:
+            max-height 0.4s ease,
+            opacity 0.3s ease,
+            transform 0.3s ease;
+        width: 100%;
+    }
+
+    .nav-wrapper.active {
+        max-height: 500px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        background-color: white;
+        padding: 1rem;
+        gap: 1.5rem;
+        /* spacing between nav items */
+    }
+
+    .nav-menu li a {
+        color: black;
+        padding: 0.5rem 0;
+        display: block;
+    }
+
+    .logo h1 {
+        color: black;
+        font-size: 1.5rem;
+    }
+
+    header {
+        flex-direction: row;
+        align-items: center;
+        background-color: white;
+        justify-content: space-between;
+    }
+
+    .cta button {
+        min-width: 170px;
+    }
+}

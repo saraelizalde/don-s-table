@@ -1,20 +1,100 @@
+{% load static %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
 
-<p>This is the home</p>
+<!DOCTYPE html>
+<html lang="en">
 
-{% if user.is_authenticated %}
-<li class="nav-item">
-	<a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-</li>
-{% else %}
-<li class="nav-item">
-	<a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-		href="{% url 'account_signup' %}">Register</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
-</li>
-{% endif %}
+<head>
+    <title>Don's Table | Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Don's Table is an Italian-American restaurant offering traditional cuisine in a warm, inviting atmosphere. Buon appetito!">
+    <meta name="keyword"
+        content="Don's Table, Italian restaurant, Italian-American cuisine, traditional dishes, family dining">
+    <meta name="author" content="Sara Elizalde">
+
+    <!--
+    ----Favicons
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/site.webmanifest">
+    ----Font Awesome
+    <script src="https://kit.fontawesome.com/2fc42d7942.js" crossorigin="anonymous"></script>
+    -->
+
+
+    <!--CSS stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+</head>
+
+<body>
+    <div class="hero-wrapper">
+        <header>
+            <div class="logo">
+                <img src="{% static 'images/logo-white.png' %}" alt="Logo of Don's Table">
+            </div>
+
+            <!-- Hamburger Toggle Button -->
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                ☰
+            </button>
+
+            <!-- Navigation -->
+            <div class="nav-wrapper">
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+
+        <section class="hero">
+            <h1>Benvenuti!</h1>
+            <h2>Don's Table welcomes you</h2>
+            <p class="hero-text">A traditional Italian-American restaurant where timeless recipes and warm hospitality
+                come together.<br>
+                From handcrafted pastas to hearty classics, we bring the taste of old-school comfort to your table.<br>
+                Book your reservation and experience the heart of Italian-American dining.</p>
+        </section>
+        <section class="hero cta">
+            <button>Register to Book a Table</button>
+            <button>Login to Book a Table</button>
+        </section>
+    </div>
+
+    <main>
+        <section class="white-section">
+            <!-- Your other content here -->
+        </section>
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+
+</html>
