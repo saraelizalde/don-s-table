@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from menu.views import my_menu
-from reservations.views import my_reservation
+from reservations.views import make_reservation, reservation_dashboard
+from .views import home
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('menu/', my_menu, name='menu'),
-    path('reservation/', my_reservation, name='reservation'),
+    path('reservation/form', make_reservation, name='reservation'),
+    path('reservation/dashboard', reservation_dashboard, name='reservation_dashboard'),
 ]
