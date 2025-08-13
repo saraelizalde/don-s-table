@@ -49,8 +49,7 @@
             <div class="nav-wrapper">
                 <nav>
                     <ul class="nav-menu">
-                        <li><a class="nav-link" aria-current="page"
-                                href="{% url 'home' %}">Home</a></li>
+                        <li><a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a></li>
                         <li><a href="#">Menu</a></li>
                         <li><a href="#">Contact</a></li>
                         {% if user.is_authenticated %}
@@ -75,6 +74,13 @@
 
         {% block hero_content %}
         <section class="hero">
+            <div class="logged-info">
+                {% if user.is_authenticated %}
+                <p class="text-end m-3">You are logged in as {{ user }}</p>
+                {% else %}
+                <p class="text-end m-3">You are not logged in</p>
+                {% endif %}
+            </div>
             <h1>Benvenuti!</h1>
             <h2>Don's Table welcomes you</h2>
             <p class="hero-text">A traditional Italian-American restaurant where timeless recipes and warm hospitality

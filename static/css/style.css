@@ -111,6 +111,11 @@ header .logo img {
     padding: 0 2rem;
 }
 
+.logged-info p{
+    text-align: right;
+    margin: 0;
+}
+
 /* Call to Action */
 .cta {
     padding: 2rem;
