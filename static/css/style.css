@@ -16,7 +16,7 @@ body {
     background-color: white;
 }
 
-h1 {
+.hero h1 {
     font-family: var(--accent-font);
     font-size: 6rem;
     font-weight: 300;
@@ -38,7 +38,7 @@ h2 {
 .hero-wrapper {
     background-image: url('../images/hero-image.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
     color: white;
     width: 100%;
@@ -128,16 +128,103 @@ header .logo img {
     cursor: pointer;
     transition: background-color 0.3s ease;
     min-width: 262px;
+    background: rgba(255, 255, 255, 0.2); /* semi-transparent background */
+    backdrop-filter: blur(8px); /* blur effect behind the button */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
 }
 
 .cta button:hover {
     transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3); /* slightly more opaque on hover */
 }
 
 /* White Section (General Content) */
 .white-section {
     background: white;
     padding: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*Account Page*/
+
+.account-page{
+    font-family: var(--primary-font);
+    padding: 0 4rem;
+    font-size: 1.2rem;
+}
+
+.account-h1 h1{
+    font-family: var(--secondary-font);
+    font-size: 6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 8vw, 5rem);
+    padding-left: 2rem;
+}
+
+.account-page a{
+    font-family: var(--primary-font);
+    color:green;
+    font-weight: 500;
+}
+
+.account-page input{
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-family: var(--primary-font);
+    box-sizing: border-box;
+}
+
+.account-page input:focus {
+    font-size: 1.2rem;
+    border-color: black;
+    outline: none;
+    box-shadow: 0 0 4px;
+}
+
+.account-page input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transform: translateY(3px);
+    accent-color: green;
+}
+
+.account-page button{
+    font-family: var(--secondary-font);
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.3s ease;
+    width: 100%;
+    max-width: 262px;  
+    display: block;
+    margin: 2rem 0 2rem;
+}
+
+.account-page button:hover{
+    transform: scale(1.05);
+    background-color: rgb(0, 83, 0); /*darker green on hover */
 }
 
 
@@ -164,6 +251,10 @@ header .logo img {
 
     .menu-toggle {
         color: black;
+    }
+
+    .account-page {
+        padding: 0 2.3rem;
     }
 }
 
@@ -220,5 +311,9 @@ header .logo img {
 
     .cta button {
         min-width: 170px;
+    }
+
+    .account-page {
+        padding: 0 1.5rem;
     }
 }
