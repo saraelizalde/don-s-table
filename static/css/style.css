@@ -9,20 +9,16 @@
     --accent-font: 'WindSong', cursive;
 }
 
+
+
 /* Base Styles */
 body {
     margin: 0;
     font-family: var(--primary-font);
     background-color: white;
+    width: 100%;
 }
 
-.hero h1 {
-    font-family: var(--accent-font);
-    font-size: 6rem;
-    font-weight: 300;
-    margin-bottom: 2rem;
-    font-size: clamp(1.5rem, 8vw, 5rem);
-}
 
 h2 {
     font-family: var(--secondary-font);
@@ -34,7 +30,18 @@ h2 {
     /* improves readability in caps */
 }
 
+
+
+
 /* Hero Wrapper with Background Image */
+.hero h1 {
+    font-family: var(--accent-font);
+    font-size: 6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 8vw, 5rem);
+}
+
 .hero-wrapper {
     background-image: url('../images/hero-image.jpg');
     background-size: cover;
@@ -61,6 +68,7 @@ header {
 header .logo img {
     width: 90px;
     max-width: 90px;
+    min-width: 1px;
     height: auto;
     display: block;
 }
@@ -111,7 +119,7 @@ header .logo img {
     padding: 0 2rem;
 }
 
-.logged-info p{
+.logged-info p {
     text-align: right;
     margin: 0;
 }
@@ -133,21 +141,70 @@ header .logo img {
     cursor: pointer;
     transition: background-color 0.3s ease;
     min-width: 262px;
-    background: rgba(255, 255, 255, 0.2); /* semi-transparent background */
-    backdrop-filter: blur(8px); /* blur effect behind the button */
-    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    background: rgba(255, 255, 255, 0.2);
+    /* semi-transparent background */
+    backdrop-filter: blur(8px);
+    /* blur effect behind the button */
+    -webkit-backdrop-filter: blur(8px);
+    /* Safari support */
 }
 
 .cta button:hover {
     transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.3); /* slightly more opaque on hover */
+    background: rgba(255, 255, 255, 0.3);
+    /* slightly more opaque on hover */
 }
 
-/* White Section (General Content) */
+
+
+
+
+
+
+
+
+
+/* Main */
 .white-section {
     background: white;
     padding: 2rem;
 }
+
+.best-sellers-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.best-sellers-grid img {
+    flex: 1 1 calc(25% - 1rem);
+    max-width: calc(25% - 1rem);
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,13 +219,13 @@ header .logo img {
 
 /*Account Page*/
 
-.account-page{
+.account-page {
     font-family: var(--primary-font);
     padding: 0 4rem;
     font-size: 1.2rem;
 }
 
-.account-h1 h1{
+.account-h1 h1 {
     font-family: var(--secondary-font);
     font-size: 6rem;
     font-weight: 300;
@@ -177,13 +234,13 @@ header .logo img {
     padding-left: 2rem;
 }
 
-.account-page a{
+.account-page a {
     font-family: var(--primary-font);
-    color:green;
+    color: green;
     font-weight: 500;
 }
 
-.account-page input{
+.account-page input {
     width: 100%;
     max-width: 400px;
     padding: 0.8rem;
@@ -210,7 +267,7 @@ header .logo img {
     accent-color: green;
 }
 
-.account-page button{
+.account-page button {
     font-family: var(--secondary-font);
     font-size: 1.1rem;
     padding: 1rem 2rem;
@@ -222,14 +279,91 @@ header .logo img {
     cursor: pointer;
     transition: transform 0.1s ease, background-color 0.3s ease;
     width: 100%;
-    max-width: 262px;  
+    max-width: 262px;
     display: block;
     margin: 2rem 0 2rem;
 }
 
-.account-page button:hover{
+.account-page button:hover {
     transform: scale(1.05);
-    background-color: rgb(0, 83, 0); /*darker green on hover */
+    background-color: rgb(0, 83, 0);
+    /*darker green on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Footer*/
+
+/* Footer */
+.site-footer {
+    background: #222;
+    /* dark background */
+    color: white;
+    padding: 2rem 1rem;
+    font-family: var(--primary-font);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    width: 100%;
+}
+
+.footer-col {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.footer-col h3 {
+    font-family: var(--secondary-font);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-col p,
+.footer-col a {
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-decoration: none;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+}
+
+.footer-col a:hover {
+    color: var(--hot-pink);
+    /* hover accent */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin: 0.3rem 0;
+}
+
+.subfooter {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #444;
+    font-size: 0.9rem;
+    color: #aaa;
 }
 
 
@@ -258,8 +392,21 @@ header .logo img {
         color: black;
     }
 
+    .best-sellers-grid img {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+
     .account-page {
         padding: 0 2.3rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        /* stack into 1 column */
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
     }
 }
 
@@ -315,10 +462,47 @@ header .logo img {
     }
 
     .cta button {
-        min-width: 170px;
+        min-width: 0;
+        width: 100%;
+        max-width: 200px;
+        padding: 0.25rem 0.5rem;
+        font-size: clamp(0.6rem, 2vw, 0.8rem);
+        box-sizing: border-box;
+    }
+
+    .best-sellers-grid img {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 
     .account-page {
         padding: 0 1.5rem;
+    }
+
+}
+
+
+@media (max-width: 240px) {
+    .cta button {
+        width: 100%;
+        font-size: 0.6rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .footer-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .footer-col {
+        flex: 1 1 200px;
+        min-width: 150px;
+    }
+
+    .footer-col p,
+    .footer-col a {
+        font-size: 80%;
     }
 }

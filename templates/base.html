@@ -97,11 +97,59 @@
 
     <main>
         {% block content %}
-        <section class="white-section">
-            <!-- Your other content here -->
+        <section class="best-sellers white-section">
+            <h2>Customer Favorites</h2>
+            <div class="best-sellers-grid">
+                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
+                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
+                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
+                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
+            </div>
+        </section>
+
+        <section class="about-us white-section">
+            <h2>About Us</h2>
+            <p>
+                At Don's Table, our goal is simple: to bring people together over hearty Italian-American dishes
+                made with love. We believe in authentic flavors, warm hospitality, and creating a place where
+                everyone feels at home. From family dinners to special celebrations, every meal is crafted
+                to make memories that last.
+            </p>
         </section>
         {% endblock %}
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-title">Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="{% url 'account_signup' %}">Register</a></li>
+                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="footer-title">Visit</h3>
+                <p>123 Mulberry St<br>New York, NY</p>
+                <p>Mon–Sun · 11:00–22:00</p>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="footer-title">Contact</h3>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                <p><a href="mailto:hello@donstable.example">hello@donstable.example</a></p>
+            </div>
+
+
+        </div>
+
+        <div class="subfooter">
+            <p>© {{ now|date:"Y" }} Don’s Table • All rights reserved</p>
+        </div>
+    </footer>
 
     <script src="{% static 'js/script.js' %}"></script>
 </body>
