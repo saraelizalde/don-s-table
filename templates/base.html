@@ -53,8 +53,8 @@
                         <li><a href="{% url 'menu' %}">Menu</a></li>
                         <li><a href="#">Contact</a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="#">My Reservations</a></li>
-                        <li><a href="#">Book a Table</a></li>
+                        <li><a href="{% url 'reservation_dashboard' %}">My Reservations</a></li>
+                        <li><a href="{% url 'reservation' %}">Book a Table</a></li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                                 href="{% url 'account_logout' %}">Logout</a>
