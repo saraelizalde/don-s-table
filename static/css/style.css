@@ -199,7 +199,20 @@ header .logo img {
 
 
 
+/*Menu Page*/
 
+.menu-page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.menu-page h1 {
+    font-family: var(--accent-font);
+    font-size: 6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 8vw, 5rem);
+}
 
 
 

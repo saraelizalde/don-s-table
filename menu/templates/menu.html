@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block hero_content %}
+<!-- empty block: overrides base block, so nothing shows -->
+{% endblock %}
+
+{% block content %}
+<section class="menu-page">
+    <h1>Our Menu</h1>
+
+    {% for category, items in menu_items.items %}
+        <h2>{{ category|title }}</h2>
+        {% if items %}
+            <div class="menu-grid">
+                {% for item in items %}
+                    <div class="menu-card">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                        <p><strong>{{ item.price }} €</strong></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No {{ category }} available right now.</p>
+        {% endif %}
+    {% endfor %}
+</section>
+{% endblock %}

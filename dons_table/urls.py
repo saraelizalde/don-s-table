@@ -24,7 +24,7 @@ urlpatterns = [
     path('', home, name='home'),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
-    path('menu/', my_menu, name='menu'),
+    path('menu/', include("menu.urls")),
     path('reservation/dashboard', reservation_dashboard, name='reservation_dashboard'),
     path('reservation/form', make_reservation, name='reservation'),
 ]
