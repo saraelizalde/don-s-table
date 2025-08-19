@@ -3,11 +3,18 @@
 
 /* CSS Variables */
 :root {
-    --hot-pink: #FF41B4;
+    --hot-red: #e77777;
+    --medium-green: rgb(3, 126, 50);
+    --darker-green: rgb(0, 74, 29);
+    --dark-grey: #222;
+    --medium-grey: #444;
+    --light-grey: #aaa;
     --primary-font: 'Quicksand', sans-serif;
     --secondary-font: 'Noto Serif Display', serif;
     --accent-font: 'WindSong', cursive;
 }
+
+
 
 
 
@@ -19,28 +26,23 @@ body {
     width: 100%;
 }
 
-
 h2 {
     font-family: var(--secondary-font);
     text-transform: uppercase;
     font-size: clamp(1.4rem, 4vw, 2.5rem);
-    /* min, ideal, max */
     font-weight: 400;
     letter-spacing: 0.05em;
-    /* improves readability in caps */
 }
 
 
 
 
-/* Hero Wrapper with Background Image */
-.hero h1 {
-    font-family: var(--accent-font);
-    font-size: 6rem;
-    font-weight: 300;
-    margin-bottom: 2rem;
-    font-size: clamp(1.5rem, 8vw, 5rem);
-}
+
+
+
+
+
+/* Hero-wrapper*/
 
 .hero-wrapper {
     background-image: url('../images/hero-image.jpg');
@@ -51,7 +53,6 @@ h2 {
     width: 100%;
 }
 
-/* Header Layout */
 header {
     padding: 1rem;
     display: flex;
@@ -60,7 +61,7 @@ header {
     flex-wrap: wrap;
 }
 
-/* Logo */
+/* Navbar and Logo*/
 .logo {
     margin: 0;
 }
@@ -73,7 +74,6 @@ header .logo img {
     display: block;
 }
 
-/* Navigation Menu (Desktop) */
 .nav-wrapper {
     display: block;
 }
@@ -99,7 +99,7 @@ header .logo img {
     transform: scale(1.05);
 }
 
-/* Hamburger Menu Button (Hidden by Default) */
+/* Hamburger Menu Button */
 .menu-toggle {
     display: none;
     font-size: 2rem;
@@ -109,9 +109,22 @@ header .logo img {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero section and introduction*/
+
+.logged-info p {
+    text-align: right;
+    margin: 0;
+}
+
+.hero h1 {
+    font-family: var(--accent-font);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 8vw, 5rem);
+}
+
 .hero {
-    padding: 1rem 1rem 1rem;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -119,12 +132,8 @@ header .logo img {
     padding: 0 2rem;
 }
 
-.logged-info p {
-    text-align: right;
-    margin: 0;
-}
+/* Call to Action Buttons */
 
-/* Call to Action */
 .cta {
     padding: 2rem;
     text-align: center;
@@ -139,20 +148,17 @@ header .logo img {
     border-radius: 5px;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease;
     min-width: 262px;
     background: rgba(255, 255, 255, 0.2);
-    /* semi-transparent background */
     backdrop-filter: blur(8px);
-    /* blur effect behind the button */
-    -webkit-backdrop-filter: blur(8px);
-    /* Safari support */
+    -webkit-backdrop-filter: blur(8px);/* Safari support */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .cta button:hover {
     transform: scale(1.05);
     background: rgba(255, 255, 255, 0.3);
-    /* slightly more opaque on hover */
 }
 
 
@@ -165,6 +171,7 @@ header .logo img {
 
 
 /* Main */
+
 .white-section {
     background: white;
     padding: 2rem;
@@ -182,8 +189,7 @@ header .logo img {
 
 .best-sellers-grid img {
     flex: 1 1 calc(25% - 1rem);
-    max-width: calc(25% - 1rem);
-    width: 100%;
+    max-width: calc(25% - 1rem); /*Shows 4 images on big screen*/
     height: auto;
     display: block;
 }
@@ -208,7 +214,6 @@ header .logo img {
 
 .menu-page h1 {
     font-family: var(--accent-font);
-    font-size: 6rem;
     font-weight: 300;
     margin-bottom: 2rem;
     font-size: clamp(1.5rem, 8vw, 5rem);
@@ -230,17 +235,17 @@ header .logo img {
 
 
 
-/*Account Page*/
+/*Account Pages*/
 
 .account-page {
     font-family: var(--primary-font);
-    padding: 0 4rem;
+    padding: 0 4rem 2rem;
     font-size: 1.2rem;
+    text-align: center;
 }
 
 .account-h1 h1 {
     font-family: var(--secondary-font);
-    font-size: 6rem;
     font-weight: 300;
     margin-bottom: 2rem;
     font-size: clamp(1.5rem, 8vw, 5rem);
@@ -248,8 +253,7 @@ header .logo img {
 }
 
 .account-page a {
-    font-family: var(--primary-font);
-    color: green;
+    color: var(--medium-green);
     font-weight: 500;
 }
 
@@ -260,13 +264,10 @@ header .logo img {
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 1.2rem;
-    font-family: var(--primary-font);
     box-sizing: border-box;
 }
 
 .account-page input:focus {
-    font-size: 1.2rem;
     border-color: black;
     outline: none;
     box-shadow: 0 0 4px;
@@ -277,30 +278,35 @@ header .logo img {
     height: 20px;
     cursor: pointer;
     transform: translateY(3px);
-    accent-color: green;
+    accent-color: var(--medium-green);
+}
+
+.account-page ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    text-align: center;
 }
 
 .account-page button {
     font-family: var(--secondary-font);
     font-size: 1.1rem;
     padding: 1rem 2rem;
-    margin-top: 1rem;
     border: none;
     border-radius: 5px;
-    background-color: green;
+    background-color: var(--medium-green);
     color: white;
     cursor: pointer;
     transition: transform 0.1s ease, background-color 0.3s ease;
     width: 100%;
     max-width: 262px;
     display: block;
-    margin: 2rem 0 2rem;
+    margin: 2rem auto;
 }
 
 .account-page button:hover {
     transform: scale(1.05);
-    background-color: rgb(0, 83, 0);
-    /*darker green on hover */
+    background-color: var(--darker-green);
 }
 
 
@@ -313,14 +319,13 @@ header .logo img {
 
 
 
-/*Footer*/
-
 /* Footer */
+
 .site-footer {
-    background: #222;
-    /* dark background */
+    background: var(--dark-grey);
     color: white;
     padding: 2rem 1rem;
+    margin-top: 1rem;
     font-family: var(--primary-font);
 }
 
@@ -348,16 +353,14 @@ header .logo img {
 
 .footer-col p,
 .footer-col a {
-    color: #ddd;
-    font-size: 0.95rem;
+    color: var(--light-grey);
     line-height: 1.4;
     text-decoration: none;
     font-size: clamp(0.8rem, 2vw, 0.95rem);
 }
 
 .footer-col a:hover {
-    color: var(--hot-pink);
-    /* hover accent */
+    color: var(--hot-red);
 }
 
 .footer-links {
@@ -374,9 +377,9 @@ header .logo img {
     text-align: center;
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid #444;
+    border-top: 1px solid var(--medium-grey);
     font-size: 0.9rem;
-    color: #aaa;
+    color: var(--light-grey);
 }
 
 
@@ -389,8 +392,8 @@ header .logo img {
 
 
 
+/* Media Query - Tablet <= 768px */
 
-/* Tablet Style Adjustments */
 @media (max-width: 768px) {
     header {
         background: white;
@@ -411,7 +414,7 @@ header .logo img {
     }
 
     .account-page {
-        padding: 0 2.3rem;
+        padding: 0 2.3rem 1rem;
     }
 
     .footer-grid {
@@ -423,7 +426,8 @@ header .logo img {
     }
 }
 
-/* Mobile Styles (Collapse Nav at 600px)*/
+/* Media Query - Mobile <= 600px */
+
 @media (max-width: 600px) {
     .menu-toggle {
         display: block;
@@ -453,7 +457,6 @@ header .logo img {
         background-color: white;
         padding: 1rem;
         gap: 1.5rem;
-        /* spacing between nav items */
     }
 
     .nav-menu li a {
@@ -489,11 +492,12 @@ header .logo img {
     }
 
     .account-page {
-        padding: 0 1.5rem;
+        padding: 0 1.5rem 1rem;
     }
 
 }
 
+/* Media Query - Very small screens <= 240px */
 
 @media (max-width: 240px) {
     .cta button {
