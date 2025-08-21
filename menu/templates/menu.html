@@ -5,6 +5,15 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="logged-info">
+    {% if user.is_authenticated %}
+    <p class="text-end m-3">You are logged in as {{ user }}</p>
+    {% else %}
+    <p class="text-end m-3">You are not logged in</p>
+    {% endif %}
+</div>
+
 <section class="menu-page">
     <h1>Our Menu</h1>
 

@@ -9,6 +9,15 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="logged-info">
+    {% if user.is_authenticated %}
+    <p class="text-end m-3">You are logged in as {{ user }}</p>
+    {% else %}
+    <p class="text-end m-3">You are not logged in</p>
+    {% endif %}
+</div>
+
 <div class="account-page">
   <div class="account-h1">
     <h1>{% trans "Sign Out" %}</h1>

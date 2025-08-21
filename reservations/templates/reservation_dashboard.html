@@ -1,1 +1,37 @@
-<p>This is where I see my reservations</p>
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
+
+{% block hero_content %}
+<!-- empty block: overrides base block, so nothing shows -->
+{% endblock %}
+
+{% block content %}
+
+<div class="logged-info">
+    {% if user.is_authenticated %}
+    <p class="text-end m-3">You are logged in as {{ user }}</p>
+    {% else %}
+    <p class="text-end m-3">You are not logged in</p>
+    {% endif %}
+</div>
+
+<section class="account-page">
+    <h2>My Reservations</h2>
+
+    {% for r in reservations %}
+    <p>
+        {{ r.date }} at {{ r.time }} — {{ r.guests }} guests
+        <strong>Status: {{ r.get_status_display }}</strong>
+    </p>
+    {% empty %}
+    <p>You have no reservations.</p>
+    {% endfor %}
+
+    <p><a href="{% url 'make_reservation' %}">Make a new reservation</a></p>
+</section>
+
+
+{% endblock %}

@@ -111,10 +111,8 @@ header .logo img {
 
 /* Hero section and introduction*/
 
-.logged-info p {
-    text-align: right;
-    margin: 0;
-}
+
+
 
 .hero h1 {
     font-family: var(--accent-font);
@@ -309,11 +307,37 @@ header .logo img {
     background-color: var(--darker-green);
 }
 
+.account-page select#id_time.form-control {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+.account-page p a {
+    display: inline-block; /*so padding can work*/
+    padding-top: 2rem;
+}
 
 
 
 
 
+/*Logged-message across pages*/
+.logged-info p {
+    text-align: right;
+    margin: 0;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.logged-info-home p {
+    padding: 0;
+}
 
 
 

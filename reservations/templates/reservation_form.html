@@ -1,1 +1,57 @@
-<p>This is where i make reservations</p>
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
+
+{% block hero_content %}
+<!-- empty block: overrides base block, so nothing shows -->
+{% endblock %}
+
+{% block content %}
+
+<div class="logged-info">
+    {% if user.is_authenticated %}
+    <p class="text-end m-3">You are logged in as {{ user }}</p>
+    {% else %}
+    <p class="text-end m-3">You are not logged in</p>
+    {% endif %}
+</div>
+
+<section class="account-page">
+
+    <h2>Make a Reservation</h2>
+
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% if form.non_field_errors %}
+    <p style="color:red;">{{ form.non_field_errors }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            {{ form.date.label_tag }}<br>
+            {{ form.date }} {{ form.date.errors }}
+        </p>
+        <p>
+            {{ form.time.label_tag }}<br>
+            {{ form.time }} {{ form.time.errors }}
+        </p>
+        <p>
+            {{ form.guests.label_tag }}<br>
+            {{ form.guests }} {{ form.guests.errors }}
+        </p>
+        <p>
+            {{ form.special_requests.label_tag }}<br>
+            {{ form.special_requests }} {{ form.special_requests.errors }}
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+{% endblock %}
