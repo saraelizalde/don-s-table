@@ -307,6 +307,15 @@ header .logo img {
     background-color: var(--darker-green);
 }
 
+.account-page button.btn-danger { 
+    background-color: rgb(214, 29, 29);
+    margin-top: 0;
+}
+
+.account-page button.btn-danger:hover {
+    background-color: darkred;
+}
+
 .account-page select#id_time.form-control {
   width: 100%;
   max-width: 400px;
