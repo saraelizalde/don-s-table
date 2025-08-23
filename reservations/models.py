@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime, timedelta
 
-STATUS = ((0, "Pending"), (1, "Confirmed"))
+STATUS_CHOICES = [
+        ("pending", "Pending"),
+        ("confirmed", "Confirmed"),
+        ("cancelled", "Cancelled"),
+    ]
 
 # Create your models here.
 class Reservation(models.Model):
@@ -16,7 +20,12 @@ class Reservation(models.Model):
     )
     special_requests = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="pending",
+        )
+    
 
     def save(self, *args, **kwargs):
         if self.time:

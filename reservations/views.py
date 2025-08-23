@@ -8,8 +8,11 @@ from .forms import ReservationForm
 # Create your views here.
 @login_required
 def reservation_dashboard(request):
-    today = localdate()
-    user_reservations = Reservation.objects.filter(user=request.user, date__gte=localdate()).order_by('date', 'time')
+    today = localdate()  # today’s date
+    user_reservations = Reservation.objects.filter(
+        user=request.user,
+        date__gte=today
+    ).order_by('date', 'time')
     return render(request, 'reservation_dashboard.html', {'reservations': user_reservations})
 
 @login_required
