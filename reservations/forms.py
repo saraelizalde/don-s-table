@@ -17,8 +17,9 @@ def generate_time_choices():
     return times
 
 class ReservationForm(forms.ModelForm):
-    time = forms.ChoiceField(
+    time = forms.TypedChoiceField(
         choices=generate_time_choices(),
+        coerce=lambda v: datetime.datetime.strptime(v, "%H:%M:%S").time() if isinstance(v, str) else v,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
 

@@ -34,8 +34,13 @@ def edit_reservation(request, reservation_id):
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            form.save()
-            return redirect('reservation_dashboard')
+            if form.has_changed():  # Only reset status if something actually changed
+                updated = form.save(commit=False)
+                updated.status = "pending"
+                updated.save()
+            else:
+                form.save()  # No changes -> just save without resetting status
+            return redirect("reservation_dashboard")
     else:
         form = ReservationForm(instance=reservation)
     return render(request, 'reservation_form.html', {'form': form})
