@@ -1,3 +1,13 @@
+"""
+URL configuration for the Reservations app.
+
+Defines URL patterns for managing reservations:
+- Dashboard view
+- Make a new reservation
+- Edit an existing reservation
+- Cancel a reservation
+"""
+
 from django.urls import path
 from . import views
 

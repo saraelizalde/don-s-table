@@ -1,3 +1,15 @@
+"""
+Views for the Reservations app.
+
+Provides functionality for users to:
+- View their reservations dashboard
+- Make a new reservation
+- Edit an existing reservation
+- Cancel a reservation
+
+All views require the user to be logged in.
+"""
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -6,10 +18,17 @@ from .models import Reservation
 from .forms import ReservationForm
 from django.contrib import messages
 
-# Create your views here.
 @login_required
 def reservation_dashboard(request):
-    today = localdate()  # today’s date
+    """
+    Display the reservation dashboard for the logged-in user.
+
+    Shows all upcoming reservations for the user, ordered by date and time.
+
+    Template:
+        reservation_dashboard.html
+    """
+    today = localdate()
     user_reservations = Reservation.objects.filter(
         user=request.user,
         date__gte=today
@@ -18,6 +37,21 @@ def reservation_dashboard(request):
 
 @login_required
 def make_reservation(request):
+    """
+    Handle the creation of a new reservation.
+
+    If the request is POST and the form is valid:
+        - Associate the reservation with the logged-in user
+        - Save the reservation
+        - Show a success message
+        - Redirect to reservation dashboard
+
+    If the request is GET or the form is invalid:
+        - Display the reservation form
+
+    Template:
+        reservation_form.html
+    """
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -32,6 +66,16 @@ def make_reservation(request):
 
 @login_required
 def edit_reservation(request, reservation_id):
+    """
+    Edit an existing reservation for the logged-in user.
+
+    Only the owner of the reservation can edit it. If the form changes:
+        - Reset the reservation status to 'pending'
+        - Show a success message
+
+    Template:
+        reservation_form.html
+    """
     reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
@@ -50,6 +94,18 @@ def edit_reservation(request, reservation_id):
 
 @login_required
 def cancel_reservation(request, reservation_id):
+    """
+    Cancel an existing reservation for the logged-in user.
+
+    Only the owner of the reservation can cancel it. Shows a success message
+    after deletion and redirects to the dashboard.
+
+    Note:
+        This view expects a POST request for deletion.
+
+    Redirects:
+        reservation_dashboard
+    """
     reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
     if request.method == "POST":
         reservation.delete()

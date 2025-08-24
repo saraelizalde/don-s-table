@@ -1,7 +1,18 @@
+"""
+Models for the Menu app.
+
+Defines the MenuItem model representing individual menu items in the restaurant.
+"""
+
 from django.db import models
 
-# Create your models here.
 class MenuItem(models.Model):
+    """
+    Represents a single item on the restaurant menu.
+
+    Meta:
+        ordering: Items are ordered by category, then by name.
+    """
     CATEGORY_CHOICES = [
         ('starter', 'Starter'),
         ('main', 'Main Course'),
@@ -16,6 +27,7 @@ class MenuItem(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
+        """Return a string representation including name and price."""
         return f"{self.name} - {self.price}€"
 
     class Meta:

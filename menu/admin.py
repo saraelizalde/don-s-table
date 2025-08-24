@@ -1,7 +1,15 @@
+"""
+Admin configuration for the Menu app.
+
+Registers the MenuItem model with custom admin options including:
+- List display fields
+- Filters
+- Search fields
+- Ordering
+"""
+
 from django.contrib import admin
 from .models import MenuItem
-
-# Register your models here.
 
 @admin.register(MenuItem)
 class MenuItemAdmin(admin.ModelAdmin):

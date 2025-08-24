@@ -1,4 +1,11 @@
-# forms.py
+"""
+Forms for the Reservations app.
+
+Includes:
+- ReservationForm: Handles validation and input for making a reservation.
+- generate_time_choices: Generates half-hourly time slots for reservations.
+"""
+
 from django import forms
 from django.utils import timezone
 from django.db.models import Sum
@@ -8,6 +15,14 @@ from .models import Reservation
 TOTAL_CAPACITY_PER_SLOT = 50
 
 def generate_time_choices():
+    """
+    Generate a list of time slots for reservations.
+
+    Time slots are half-hourly from 11:00 AM to 10:30 PM.
+
+    Returns:
+        list of tuples: Each tuple contains (datetime.time, formatted string)
+    """
     times = []
     for hour in range(11, 23):
         for minute in (0, 30):
@@ -17,6 +32,20 @@ def generate_time_choices():
     return times
 
 class ReservationForm(forms.ModelForm):
+    """
+    Form for creating or editing a Reservation.
+
+    Fields:
+        date: Date of the reservation.
+        time: Time of the reservation (half-hour slots).
+        guests: Number of guests (1–14).
+        special_requests: Optional text for special requests.
+
+    Validation:
+        - Ensures reservation is not in the past.
+        - Checks that the total number of guests in a time slot
+          does not exceed TOTAL_CAPACITY_PER_SLOT.
+    """
     time = forms.TypedChoiceField(
         choices=generate_time_choices(),
         coerce=lambda v: datetime.datetime.strptime(v, "%H:%M:%S").time() if isinstance(v, str) else v,
@@ -33,6 +62,18 @@ class ReservationForm(forms.ModelForm):
         }
 
     def clean(self):
+        """
+        Validate reservation data.
+
+        Checks:
+        - Reservation datetime is not in the past.
+        - Total guests for the selected time slot do not exceed capacity.
+
+        Returns:
+            dict: Cleaned data
+        Raises:
+            forms.ValidationError: If any validation fails
+        """
         cleaned = super().clean()
         d = cleaned.get('date')
         t = cleaned.get('time')
