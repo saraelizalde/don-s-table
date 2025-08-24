@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.timezone import localdate
 from .models import Reservation
 from .forms import ReservationForm
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -23,6 +24,7 @@ def make_reservation(request):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.save()
+            messages.success(request, "Your reservation has been submitted and is pending confirmation.")
             return redirect('reservation_dashboard')
     else:
         form = ReservationForm()
@@ -38,6 +40,7 @@ def edit_reservation(request, reservation_id):
                 updated = form.save(commit=False)
                 updated.status = "pending"
                 updated.save()
+                messages.success(request, "Your reservation has been updated and is pending confirmation.")
             else:
                 form.save()  # No changes -> just save without resetting status
             return redirect("reservation_dashboard")
@@ -50,5 +53,6 @@ def cancel_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
     if request.method == "POST":
         reservation.delete()
+        messages.success(request, "Reservation cancelled successfully.")
         return redirect('reservation_dashboard')
     return redirect('reservation_dashboard')

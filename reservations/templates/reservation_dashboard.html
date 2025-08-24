@@ -21,6 +21,16 @@
 <section class="account-page">
     <h2>My Reservations</h2>
 
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     {% for r in reservations %}
     <div class="reservation-card">
         <p>
@@ -28,13 +38,14 @@
             <strong>Status: {{ r.get_status_display }}</strong>
         </p>
         <p>
-            <form action="{% url 'edit_reservation' r.id %}" method="get" style="display:inline;">
-                <button type="submit">Edit</button>
-            </form>
-            <form action="{% url 'cancel_reservation' r.id %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn-danger" onclick="return confirm('Are you sure you want to cancel this reservation?');">Cancel</button>
-            </form>
+        <form action="{% url 'edit_reservation' r.id %}" method="get" style="display:inline;">
+            <button type="submit">Edit</button>
+        </form>
+        <form action="{% url 'cancel_reservation' r.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger"
+                onclick="return confirm('Are you sure you want to cancel this reservation?');">Cancel</button>
+        </form>
         </p>
     </div>
 
