@@ -91,12 +91,21 @@
                 Book your reservation and experience the heart of Italian-American dining.</p>
         </section>
         <section class="hero cta">
+            {% if user.is_authenticated %}
+            <a href="{% url 'make_reservation' %}">
+                <button>Book a Table</button>
+            </a>
+            <a href="{% url 'reservation_dashboard' %}">
+                <button>See My Reservations</button>
+            </a>
+            {% else %}
             <a href="{% url 'account_signup' %}">
                 <button>Register to Book a Table</button>
             </a>
             <a href="{% url 'account_login' %}">
                 <button>Login to Book a Table</button>
             </a>
+            {% endif %}
         </section>
         {% endblock %}
     </div>
