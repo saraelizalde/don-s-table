@@ -7,3 +7,11 @@ def home(request):
         base.html
     """
     return render(request, 'base.html')
+
+def contact(request):
+    """
+    Render the contact page of Don's Table.
+    Template:
+        contact.html
+    """
+    return render(request, "contact.html")

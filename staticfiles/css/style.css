@@ -19,6 +19,7 @@
 
 
 /* Base Styles */
+
 body {
     margin: 0;
     font-family: var(--primary-font);
@@ -32,6 +33,25 @@ h2 {
     font-size: clamp(1.4rem, 4vw, 2.5rem);
     font-weight: 400;
     letter-spacing: 0.05em;
+}
+
+
+
+
+
+
+
+
+/*Logged-message across pages*/
+.logged-info p {
+    text-align: right;
+    margin: 0;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.logged-info-home p {
+    padding: 0;
 }
 
 
@@ -336,17 +356,62 @@ header .logo img {
 
 
 
-/*Logged-message across pages*/
-.logged-info p {
-    text-align: right;
-    margin: 0;
-    font-size: 1rem;
-    padding: 1rem;
+
+
+
+/* Contact Page */
+.contact-page {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.logged-info-home p {
-    padding: 0;
+.contact-page h1 {
+    font-family: var(--accent-font);
+    font-size: clamp(2rem, 6vw, 5rem);
+    margin-bottom: 1rem;
+    font-weight: 400;
 }
+
+.contact-page .intro {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--medium-grey);
+}
+
+.contact-page .contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-page .contact-info h2 {
+    font-family: var(--secondary-font);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-page .contact-info p,
+.contact-page .contact-info a {
+    font-size: 1.1rem;
+    color: var(--dark-grey);
+}
+
+.contact-page .contact-info a:hover {
+    color: var(--hot-red);
+}
+
+.contact-page .map {
+    margin-top: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
 
 
 

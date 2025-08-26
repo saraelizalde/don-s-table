@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="contact-page">
+    <h1>Contact Us</h1>
+    <p class="intro">
+        We’d love to hear from you! Whether you have a question about our menu,
+        need help with a reservation, or just want to say hello — feel free to reach out.
+    </p>
+
+    <div class="contact-info">
+        <h2>Visit Us</h2>
+        <p>123 Little Italy St<br>New York, NY</p>
+        <p><strong>Hours:</strong> Mon–Sun · 11:00–22:00</p>
+    </div>
+
+    <div class="contact-info">
+        <h2>Call or Email</h2>
+        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p><a href="mailto:donstable@email.example">donstable@email.example</a></p>
+    </div>
+
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.946224792084!2d-74.00006457364468!3d40.71920028717422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2598845057def%3A0x9ecf1b969fbbb484!2sLittle%20Italy%2C%20New%20York%2C%20%C3%89tat%20de%20New%20York%2010013%2C%20%C3%89tats-Unis!5e0!3m2!1sfr!2sie!4v1756219133306!5m2!1sfr!2sie"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+{% endblock %}

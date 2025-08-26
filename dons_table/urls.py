@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from menu.views import my_menu
 from reservations.views import make_reservation, reservation_dashboard
-from .views import home
+from .views import home, contact
 
 urlpatterns = [
     path('', home, name='home'),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
+    path("contact/", contact, name="contact"),
     path('menu/', include("menu.urls")),
     path('reservation/', include('reservations.urls')),
 ]
