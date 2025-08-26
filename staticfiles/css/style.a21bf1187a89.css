@@ -11,7 +11,7 @@
     --light-grey: #aaa;
     --primary-font: 'Quicksand', sans-serif;
     --secondary-font: 'Noto Serif Display', serif;
-    --accent-font: 'WindSong', 'Lucida Handwriting', serif;
+    --accent-font: 'WindSong', cursive;
 }
 
 
@@ -65,7 +65,7 @@ h2 {
 /* Hero-wrapper*/
 
 .hero-wrapper {
-    background-image: url('../images/hero-image.jpg');
+    background-image: url("../images/hero-image.3f37e63bbc51.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -470,6 +470,7 @@ header .logo img {
 .reservation-table h1{
     font-family: var(--accent-font);
     font-weight: 300;
+    text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: clamp(2rem, 6vw, 4rem);
     margin-bottom: 2rem;

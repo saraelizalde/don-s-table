@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block hero_content %}
+<!-- empty block: overrides base block, so nothing shows -->
+{% endblock %}
+
+{% block content %}
+<section class="white-section reservation-table">
+    <h1>Staff Reservation Management</h1>
+
+    <h2>Pending Reservations</h2>
+    {% if pending %}
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guests</th>
+                <th>Special Requests</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in pending %}
+            <tr>
+                <td>{{ r.user.username }}</td>
+                <td>{{ r.date }}</td>
+                <td>{{ r.time }}</td>
+                <td>{{ r.guests }}</td>
+                <td>{{ r.special_requests|default:"-" }}</td>
+                <td>
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="reservation_id" value="{{ r.id }}">
+                        <button type="submit" name="status" value="confirmed"
+                            onclick="return confirm('Confirm this reservation?');">Confirm</button>
+                        <button type="submit" name="status" value="cancelled"
+                            onclick="return confirm('Cancel this reservation?');">Cancel</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No pending reservations.</p>
+    {% endif %}
+
+    <h2>Confirmed Reservations</h2>
+    {% if confirmed %}
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guests</th>
+                <th>Special Requests</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in confirmed %}
+            <tr>
+                <td>{{ r.user.username }}</td>
+                <td>{{ r.date }}</td>
+                <td>{{ r.time }}</td>
+                <td>{{ r.guests }}</td>
+                <td>{{ r.special_requests|default:"-" }}</td>
+                <td>
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="reservation_id" value="{{ r.id }}">
+                        <button type="submit" name="status" value="cancelled"
+                            onclick="return confirm('Cancel this reservation?');">Cancel</button>
+                        <button type="submit" name="status" value="pending"
+                            onclick="return confirm('Set this reservation to pending?');">Pending</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No confirmed reservations.</p>
+    {% endif %}
+
+    <h2>Cancelled Reservations</h2>
+    {% if cancelled %}
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guests</th>
+                <th>Special Requests</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in cancelled %}
+            <tr>
+                <td>{{ r.user.username }}</td>
+                <td>{{ r.date }}</td>
+                <td>{{ r.time }}</td>
+                <td>{{ r.guests }}</td>
+                <td>{{ r.special_requests|default:"-" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No cancelled reservations.</p>
+    {% endif %}
+</section>
+{% endblock %}

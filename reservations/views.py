@@ -17,6 +17,7 @@ from django.utils.timezone import localdate
 from .models import Reservation
 from .forms import ReservationForm
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 
 @login_required
 def reservation_dashboard(request):
@@ -118,3 +119,37 @@ def cancel_reservation(request, reservation_id):
         messages.success(request, "Reservation cancelled successfully.")
         return redirect('reservation_dashboard')
     return redirect('reservation_dashboard')
+
+
+@staff_member_required
+def superuser_reservations(request):
+    """
+    View for superusers to manage all reservations.
+
+    Displays reservations grouped by status (pending, confirmed, cancelled)
+    in chronological order. Superusers can change the status of reservations
+    and see special requests.
+    """
+    reservations_pending = Reservation.objects.filter(status="pending").order_by("date", "time")
+    reservations_confirmed = Reservation.objects.filter(status="confirmed").order_by("date", "time")
+    reservations_cancelled = Reservation.objects.filter(status="cancelled").order_by("date", "time")
+
+    if request.method == "POST":
+        res_id = request.POST.get("reservation_id")
+        new_status = request.POST.get("status")
+        reservation = Reservation.objects.get(id=res_id)
+        if reservation:
+            reservation.status = new_status
+            reservation.save()
+            messages.success(request, f"Reservation status updated to {new_status}.")
+            return redirect("superuser_reservations")
+
+    return render(
+        request,
+        "superuser_reservations.html",
+        {
+            "pending": reservations_pending,
+            "confirmed": reservations_confirmed,
+            "cancelled": reservations_cancelled,
+        },
+    )

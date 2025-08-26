@@ -38,6 +38,9 @@
             <div class="nav-wrapper">
                 <nav>
                     <ul class="nav-menu">
+                        {% if user.is_superuser %}
+                        <li><a href="{% url 'superuser_reservations' %}">Manage Reservations</a></li>
+                        {% endif %}
                         <li><a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'menu' %}">Menu</a></li>
                         <li><a href="{% url 'contact' %}">Contact</a></li>

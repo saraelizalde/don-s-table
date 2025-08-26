@@ -6,6 +6,7 @@ Defines URL patterns for managing reservations:
 - Make a new reservation
 - Edit an existing reservation
 - Cancel a reservation
+- Superuser view to manage all reservations
 """
 
 from django.urls import path
@@ -16,4 +17,5 @@ urlpatterns = [
     path('form/', views.make_reservation, name='make_reservation'),
     path("<int:reservation_id>/edit/", views.edit_reservation, name="edit_reservation"),
     path("<int:reservation_id>/cancel/", views.cancel_reservation, name="cancel_reservation"),
+    path("superuser/", views.superuser_reservations, name="superuser_reservations"),
 ]
