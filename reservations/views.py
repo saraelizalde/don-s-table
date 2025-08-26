@@ -69,14 +69,20 @@ def edit_reservation(request, reservation_id):
     """
     Edit an existing reservation for the logged-in user.
 
-    Only the owner of the reservation can edit it. If the form changes:
-        - Reset the reservation status to 'pending'
-        - Show a success message
+    If the user is a superuser, they can edit any reservation.
+    Otherwise, only the owner of the reservation can edit it.
+
+    If the form changes:
+        - The reservation status is reset to 'pending'
+        - A success message is displayed
 
     Template:
         reservation_form.html
     """
-    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    if request.user.is_superuser:
+        reservation = get_object_or_404(Reservation, id=reservation_id)
+    else:
+        reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
