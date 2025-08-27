@@ -34,3 +34,50 @@ document.addEventListener('DOMContentLoaded', function () {
     swapLogoForTablet();
     window.addEventListener('resize', swapLogoForTablet);
 });
+
+// Reservation cancellation modal
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("cancelModal");
+    const closeModalBtn = document.getElementById("closeModal");
+    const confirmCancelBtn = document.getElementById("confirmCancel");
+    let activeForm = null;
+
+    /**
+     * Open the cancellation confirmation modal.
+     * Triggered when a "Cancel" button is clicked. Saves a reference
+     * to the reservation form that should be submitted if the user confirms.
+     */
+    document.querySelectorAll(".cancel-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            activeForm = button.closest("form"); // Save which form was clicked
+            modal.style.display = "flex";
+        });
+    });
+
+    /**
+     * Close the modal without submitting the form.
+     */
+    closeModalBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        activeForm = null;
+    });
+
+    /**
+     * Confirm cancellation.
+     * Submits the reservation form associated with the cancel button
+     * that was originally clicked.
+     */
+    confirmCancelBtn.addEventListener("click", () => {
+        if (activeForm) activeForm.submit();
+    });
+
+    /**
+     * Close modal if the user clicks outside the modal content.
+     */
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            activeForm = null;
+        }
+    });
+});

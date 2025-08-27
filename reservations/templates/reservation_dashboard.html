@@ -41,10 +41,9 @@
         <form action="{% url 'edit_reservation' r.id %}" method="get" style="display:inline;">
             <button type="submit">Edit</button>
         </form>
-        <form action="{% url 'cancel_reservation' r.id %}" method="post" style="display:inline;">
+        <form method="POST" action="{% url 'cancel_reservation' r.id %}" class="cancel-form">
             {% csrf_token %}
-            <button type="submit" class="btn-danger"
-                onclick="return confirm('Are you sure you want to cancel this reservation?');">Cancel</button>
+            <button type="button" class="cancel-btn btn-danger" data-id="{{ r.id }}">Cancel</button>
         </form>
         </p>
     </div>
@@ -56,5 +55,16 @@
     <p><a href="{% url 'make_reservation' %}">Make a new reservation</a></p>
 </section>
 
+<!-- Cancel Confirmation Modal -->
+<div id="cancelModal" class="modal">
+    <div class="modal-content">
+        <h2>Cancel Reservation</h2>
+        <p>Are you sure you want to cancel this reservation?</p>
+        <div class="modal-actions">
+            <button id="confirmCancel" class="btn-cancel">Yes, Cancel</button>
+            <button id="closeModal" class="btn-secondary">No, Go Back</button>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

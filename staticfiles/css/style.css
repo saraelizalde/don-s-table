@@ -4,6 +4,8 @@
 /* CSS Variables */
 :root {
     --hot-red: #e77777;
+    --strong-red: rgb(214, 29, 29);
+    --darker-red: darkred;
     --medium-green: rgb(3, 126, 50);
     --darker-green: rgb(0, 74, 29);
     --dark-grey: #222;
@@ -130,9 +132,6 @@ header .logo img {
 }
 
 /* Hero section and introduction*/
-
-
-
 
 .hero h1 {
     font-family: var(--accent-font);
@@ -328,12 +327,12 @@ header .logo img {
 }
 
 .account-page button.btn-danger { 
-    background-color: rgb(214, 29, 29);
+    background-color: var(--strong-red);
     margin-top: 0;
 }
 
 .account-page button.btn-danger:hover {
-    background-color: darkred;
+    background-color: var(--darker-red);
 }
 
 .account-page select#id_time.form-control {
@@ -351,6 +350,73 @@ header .logo img {
     display: inline-block; /*so padding can work*/
     padding-top: 2rem;
 }
+
+
+
+
+
+
+
+
+
+
+/* Modal base */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal content box */
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal h2 {
+  font-family: var(--secondary-font);
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Buttons */
+.btn-cancel {
+  background-color: var(--strong-red);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: var(--medium-grey);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
 
 
 
