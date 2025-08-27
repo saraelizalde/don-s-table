@@ -29,7 +29,9 @@
     {% endif %}
 
     {% if form.non_field_errors %}
-    <p style="color:red;">{{ form.non_field_errors }}</p>
+    <div class="form-errors">
+        {{ form.non_field_errors }}
+    </div>
     {% endif %}
 
     <form method="post">

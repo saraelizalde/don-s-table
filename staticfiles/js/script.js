@@ -56,20 +56,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /**
      * Close the modal without submitting the form.
+     * Resets the `activeForm` reference to null.
      */
-    closeModalBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-        activeForm = null;
-    });
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+            activeForm = null;
+        });
+    }
 
     /**
      * Confirm cancellation.
      * Submits the reservation form associated with the cancel button
      * that was originally clicked.
      */
-    confirmCancelBtn.addEventListener("click", () => {
-        if (activeForm) activeForm.submit();
-    });
+    if (modal && confirmCancelBtn) {
+        confirmCancelBtn.addEventListener("click", () => {
+            if (activeForm) activeForm.submit();
+        });
+    }
 
     /**
      * Close modal if the user clicks outside the modal content.

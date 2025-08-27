@@ -11,11 +11,11 @@
 
 {% block content %}
 <div class="logged-info">
-    {% if user.is_authenticated %}
-    <p class="text-end m-3">You are logged in as {{ user }}</p>
-    {% else %}
-    <p class="text-end m-3">You are not logged in</p>
-    {% endif %}
+  {% if user.is_authenticated %}
+  <p class="text-end m-3">You are logged in as {{ user }}</p>
+  {% else %}
+  <p class="text-end m-3">You are not logged in</p>
+  {% endif %}
 </div>
 
 <div class="account-page">
@@ -50,10 +50,27 @@
 
   <form class="login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <!-- Non-field errors -->
+    {% if form.non_field_errors %}
+    <div class="form-errors">
+      {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    <p>
+        {{ form.login.label_tag }}<br>
+        {{ form.login }} {{ form.login.errors }}
+    </p>
+    <p>
+        {{ form.password.label_tag }}<br>
+        {{ form.password }} {{ form.password.errors }}
+    </p>
+
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
+
     <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
     <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
   </form>

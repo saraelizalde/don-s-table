@@ -47,7 +47,7 @@ class ReservationForm(forms.ModelForm):
           does not exceed TOTAL_CAPACITY_PER_SLOT.
     """
     time = forms.TypedChoiceField(
-        choices=generate_time_choices(),
+        choices=[("", "-- : --")] + generate_time_choices(),
         coerce=lambda v: datetime.datetime.strptime(v, "%H:%M:%S").time() if isinstance(v, str) else v,
         widget=forms.Select(attrs={'class': 'form-control'})
     )

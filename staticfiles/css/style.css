@@ -211,6 +211,15 @@ header .logo img {
     display: block;
 }
 
+.best-sellers h2,
+.about-us h2{
+    text-align: center;
+}
+
+.about-us p{
+    padding: 0 2.5rem;
+}
+
 
 
 
@@ -298,6 +307,43 @@ header .logo img {
     accent-color: var(--medium-green);
 }
 
+.account-page input[type="date"],
+.account-page input[type="time"] {
+    -webkit-appearance: none; /* remove Chrome/Safari default styles */
+    -moz-appearance: textfield; /* remove Firefox default */
+    appearance: none;
+    font-family: var(--primary-font);
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.account-page textarea.form-control {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: var(--primary-font);
+    font-size: 1.2rem;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+.account-page .form-errors,
+.account-page .errorlist,
+.account-page .nonfield-errors {
+    color: rgb(214, 29, 29);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
 .account-page ul {
     list-style-type: none;
     padding-left: 0;
@@ -342,7 +388,7 @@ header .logo img {
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   box-sizing: border-box;
 }
 
@@ -533,7 +579,7 @@ header .logo img {
 
 /*Superuser Dashboard*/
 
-.reservation-table h1{
+.reservation-dashboard h1{
     font-family: var(--accent-font);
     font-weight: 300;
     letter-spacing: 0.05em;
@@ -541,6 +587,18 @@ header .logo img {
     margin-bottom: 2rem;
     color: var(--medium-green);
     text-align: center;
+}
+
+.reservation-dashboard h2 {
+    font-family: var(--secondary-font);
+    text-align: center;
+    margin: 2rem 0 1rem;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* allows horizontal scroll only if needed */
 }
 
 .reservation-table {
@@ -554,6 +612,7 @@ header .logo img {
     border: 1px solid var(--medium-grey);
     padding: 0.5rem;
     text-align: left;
+    word-break: break-word;
 }
 
 .reservation-table th {
@@ -599,8 +658,9 @@ header .logo img {
 
 
 
-/* Footer */
 
+
+/* Footer */
 .site-footer {
     background: var(--dark-grey);
     color: white;
