@@ -37,6 +37,9 @@
             {{ r.date }} at {{ r.time }} — {{ r.guests }} guests
             <strong>Status: {{ r.get_status_display }}</strong>
         </p>
+        {% if r.special_requests %}
+        <p><em>Special Requests: {{ r.special_requests }}</em></p>
+        {% endif %}
         <p>
         <form action="{% url 'edit_reservation' r.id %}" method="get" style="display:inline;">
             <button type="submit">Edit</button>
