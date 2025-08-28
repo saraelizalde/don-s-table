@@ -27,8 +27,8 @@ class MenuItem(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
-        """Return a string representation including name and price."""
-        return f"{self.name} - {self.price}€"
+        """Return a string representation including name and price with 2 decimals."""
+        return f"{self.name} - {self.price:.2f}€"
 
     class Meta:
         ordering = ['category', 'name']
