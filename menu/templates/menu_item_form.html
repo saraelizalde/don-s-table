@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block hero_content %}
+<!-- empty block to override base -->
+{% endblock %}
+
+{% block content %}
+<div class="account-page">
+    <div class="account-h1">
+        <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Menu Item</h1>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.pk %}Update{% else %}Add{% endif %}</button>
+    </form>
+</div>
+{% endblock %}
