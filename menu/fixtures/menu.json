@@ -1,0 +1,299 @@
+[
+    {
+        "model": "menu.menuitem",
+        "pk": 1,
+        "fields": {
+            "name": "Bruschetta",
+            "description": "Grilled bread topped with fresh tomatoes, garlic, and basil.",
+            "price": "6.50",
+            "category": "starter",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 2,
+        "fields": {
+            "name": "Garlic Knots",
+            "description": "Soft dough knots brushed with garlic butter and herbs.",
+            "price": "5.50",
+            "category": "starter",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 3,
+        "fields": {
+            "name": "Mozzarella Sticks",
+            "description": "Golden-fried mozzarella with a side of marinara.",
+            "price": "6.00",
+            "category": "starter",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 4,
+        "fields": {
+            "name": "Italian Wedding Soup",
+            "description": "Mini meatballs, pasta, and greens in savory broth.",
+            "price": "8.00",
+            "category": "starter",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 5,
+        "fields": {
+            "name": "Fried Calamari",
+            "description": "Lightly breaded squid rings served with marinara.",
+            "price": "8.50",
+            "category": "starter",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 6,
+        "fields": {
+            "name": "Prosciutto-Wrapped Melon",
+            "description": "Sweet melon wrapped in salty prosciutto slices.",
+            "price": "7.50",
+            "category": "starter",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 7,
+        "fields": {
+            "name": "Tagliatelle Carbonara",
+            "description": "Classic Roman pasta with pancetta, egg, and Parmesan.",
+            "price": "14.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 8,
+        "fields": {
+            "name": "Chicken Parmesan",
+            "description": "Breaded chicken breast topped with marinara and mozzarella.",
+            "price": "16.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 9,
+        "fields": {
+            "name": "Spaghetti and Meatballs",
+            "description": "Spaghetti tossed in marinara with house-made meatballs.",
+            "price": "15.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 10,
+        "fields": {
+            "name": "Fettuccine Alfredo",
+            "description": "Creamy Parmesan sauce over fresh fettuccine.",
+            "price": "14.50",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 11,
+        "fields": {
+            "name": "Shrimp Scampi",
+            "description": "Shrimp sautéed in garlic butter and white wine over linguine.",
+            "price": "18.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 12,
+        "fields": {
+            "name": "Margherita Pizza",
+            "description": "Tomato sauce, fresh mozzarella, and basil.",
+            "price": "12.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 13,
+        "fields": {
+            "name": "Pepperoni Pizza",
+            "description": "Classic mozzarella and tomato pizza with pepperoni slices.",
+            "price": "13.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 14,
+        "fields": {
+            "name": "Meat Lover's Pizza",
+            "description": "Pepperoni, sausage, meatballs, and ham.",
+            "price": "15.50",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 15,
+        "fields": {
+            "name": "Veggie Pizza",
+            "description": "Mushrooms, onions, peppers, olives, and mozzarella.",
+            "price": "13.00",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 16,
+        "fields": {
+            "name": "Pesto Chicken Pizza",
+            "description": "Grilled chicken, pesto sauce, and mozzarella.",
+            "price": "14.50",
+            "category": "main",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 17,
+        "fields": {
+            "name": "Tiramisu",
+            "description": "Coffee-flavored Italian dessert.",
+            "price": "7.00",
+            "category": "dessert",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 18,
+        "fields": {
+            "name": "Cannoli",
+            "description": "Crispy pastry shells filled with sweet ricotta cream.",
+            "price": "6.50",
+            "category": "dessert",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 19,
+        "fields": {
+            "name": "Affogato",
+            "description": "Vanilla gelato drowned in hot espresso.",
+            "price": "5.50",
+            "category": "dessert",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 20,
+        "fields": {
+            "name": "Ricotta Cheesecake",
+            "description": "Creamy ricotta cheesecake with a graham crust.",
+            "price": "7.00",
+            "category": "dessert",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 21,
+        "fields": {
+            "name": "Nutella Pizza",
+            "description": "Mini dessert pizza with Nutella and strawberries.",
+            "price": "7.00",
+            "category": "dessert",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 22,
+        "fields": {
+            "name": "Limoncello Cake",
+            "description": "Light lemon sponge with limoncello frosting.",
+            "price": "6.50",
+            "category": "dessert",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 23,
+        "fields": {
+            "name": "Pinot Grigio",
+            "description": "Crisp white wine with citrus notes, glass.",
+            "price": "7.50",
+            "category": "drink",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 24,
+        "fields": {
+            "name": "Chianti",
+            "description": "Dry red wine from Tuscany, glass.",
+            "price": "8.00",
+            "category": "drink",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 25,
+        "fields": {
+            "name": "Prosecco",
+            "description": "Italian sparkling wine, glass.",
+            "price": "8.50",
+            "category": "drink",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 26,
+        "fields": {
+            "name": "Aranciata",
+            "description": "Italian orange soda by San Pellegrino.",
+            "price": "4.00",
+            "category": "drink",
+            "available": true
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 27,
+        "fields": {
+            "name": "Espresso",
+            "description": "Strong Italian-style coffee shot.",
+            "price": "3.00",
+            "category": "drink",
+            "available": true
+        }
+    }
+]
