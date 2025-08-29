@@ -17,6 +17,9 @@
         content="Don's Table, Italian restaurant, Italian-American cuisine, traditional dishes, family dining">
     <meta name="author" content="Sara Elizalde">
 
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
     <!--CSS stylesheet-->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
@@ -108,10 +111,26 @@
         <section class="best-sellers white-section">
             <h2>Customer Favorites</h2>
             <div class="best-sellers-grid">
-                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
-                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
-                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
-                <img src="{% static 'images/placeholder-image.webp' %}" alt="Menu item">
+                <div class="dish-card">
+                    <h3>Bruschetta</h3>
+                    <img src="{% static 'images/bruschetta.jpg' %}" alt="Bruschetta">
+                    <p>Grilled bread topped with fresh tomatoes, garlic, and basil.</p>
+                </div>
+                <div class="dish-card">
+                    <h3>Pepperoni Pizza</h3>
+                    <img src="{% static 'images/pepperoni-pizza.jpg' %}" alt="Pepperoni Pizza">
+                    <p>Classic mozzarella and tomato pizza with pepperoni slices.</p>
+                </div>
+                <div class="dish-card">
+                    <h3>Spaghetti & Meatballs</h3>
+                    <img src="{% static 'images/spaghetti-meatballs.jpg' %}" alt="Spaghetti Meatballs">
+                    <p>Spaghetti tossed in marinara with house-made meatballs.</p>
+                </div>
+                <div class="dish-card">
+                    <h3>Cannoli</h3>
+                    <img src="{% static 'images/cannoli.jpg' %}" alt="Cannoli">
+                    <p>Crispy pastry shells filled with sweet ricotta cream.</p>
+                </div>
             </div>
         </section>
 

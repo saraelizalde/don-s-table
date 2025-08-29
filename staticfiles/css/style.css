@@ -3,7 +3,7 @@
 
 /* CSS Variables */
 :root {
-    --hot-red: #e77777;
+    --hot-red: #db5757;
     --strong-red: rgb(214, 29, 29);
     --darker-red: darkred;
     --medium-green: rgb(3, 126, 50);
@@ -169,7 +169,8 @@ header .logo img {
     min-width: 262px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);/* Safari support */
+    -webkit-backdrop-filter: blur(8px);
+    /* Safari support */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -195,28 +196,53 @@ header .logo img {
 }
 
 .best-sellers-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 cards per row */
     gap: 1rem;
-    padding: 0;
-    margin: 0 auto;
     max-width: 1200px;
+    margin: 0 auto;
 }
 
-.best-sellers-grid img {
-    flex: 1 1 calc(25% - 1rem);
-    max-width: calc(25% - 1rem); /*Shows 4 images on big screen*/
-    height: auto;
-    display: block;
-}
-
-.best-sellers h2,
-.about-us h2{
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* space between title, image, description */
+    background: #fff;
+    /* optional for invisible card look */
     text-align: center;
 }
 
-.about-us p{
+.dish-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    /* optional */
+    display: block;
+}
+
+.dish-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.2em;
+    word-break: break-word;
+    font-family: var(--secondary-font);
+}
+
+.dish-card p {
+    font-size: 0.9rem;
+    color: #444;
+    margin: 0;
+    text-align: center;
+}
+
+.best-sellers h2,
+.about-us h2 {
+    text-align: center;
+}
+
+.about-us p {
     padding: 0 2.5rem;
 }
 
@@ -258,7 +284,8 @@ header .logo img {
 .menu-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* center the cards */
+    justify-content: center;
+    /* center the cards */
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
@@ -268,8 +295,9 @@ header .logo img {
     border-radius: 10px;
     padding: 1rem 1.5rem;
     width: 250px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: left; /* keep card content aligned left */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    /* keep card content aligned left */
     transition: transform 0.2s ease;
 }
 
@@ -325,6 +353,10 @@ header .logo img {
     padding-left: 2rem;
 }
 
+.account-page h2 {
+    color: var(--hot-red);
+}
+
 .account-page a {
     color: var(--medium-green);
     font-weight: 500;
@@ -356,8 +388,10 @@ header .logo img {
 
 .account-page input[type="date"],
 .account-page input[type="time"] {
-    -webkit-appearance: none; /* remove Chrome/Safari default styles */
-    -moz-appearance: textfield; /* remove Firefox default */
+    -webkit-appearance: none;
+    /* remove Chrome/Safari default styles */
+    -moz-appearance: textfield;
+    /* remove Firefox default */
     appearance: none;
     font-family: var(--primary-font);
     font-size: 1.2rem;
@@ -419,7 +453,7 @@ header .logo img {
     background-color: var(--darker-green);
 }
 
-.account-page button.btn-danger { 
+.account-page button.btn-danger {
     background-color: var(--strong-red);
     margin-top: 0;
 }
@@ -429,19 +463,25 @@ header .logo img {
 }
 
 .account-page select#id_time.form-control {
-  width: 100%;
-  max-width: 400px;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
 }
 
 .account-page p a {
-    display: inline-block; /*so padding can work*/
+    display: inline-block;
     padding-top: 2rem;
+}
+
+.page-wrapper {
+    min-height: calc(100vh - 260px);
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -455,57 +495,57 @@ header .logo img {
 
 /* Modal base */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
 }
 
 /* Modal content box */
 .modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
 }
 
 .modal h2 {
-  font-family: var(--secondary-font);
-  margin-bottom: 1rem;
+    font-family: var(--secondary-font);
+    margin-bottom: 1rem;
 }
 
 .modal-actions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 /* Buttons */
 .btn-cancel {
-  background-color: var(--strong-red);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: var(--strong-red);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .btn-secondary {
-  background-color: var(--medium-grey);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: var(--medium-grey);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 
@@ -528,6 +568,7 @@ header .logo img {
 
 .contact-page h1 {
     font-family: var(--accent-font);
+    color: var(--medium-green);
     font-size: clamp(2rem, 6vw, 5rem);
     margin-bottom: 1rem;
     font-weight: 400;
@@ -545,6 +586,7 @@ header .logo img {
 
 .contact-page .contact-info h2 {
     font-family: var(--secondary-font);
+    color: var(--hot-red);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
@@ -563,7 +605,7 @@ header .logo img {
     margin-top: 2rem;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -626,7 +668,7 @@ header .logo img {
 
 /*Superuser Dashboard Reservation and Dashboard*/
 
-.reservation-dashboard h1{
+.reservation-dashboard h1 {
     font-family: var(--accent-font);
     font-weight: 300;
     letter-spacing: 0.05em;
@@ -701,80 +743,6 @@ header .logo img {
 
 
 
-
-
-
-
-/* Superuser Menu Dashboard 
-
-.superuser-menu h1 {
-    font-family: var(--accent-font);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    font-size: clamp(2rem, 6vw, 4rem);
-    margin-bottom: 2rem;
-    color: var(--medium-green);
-    text-align: center;
-}
-
-.superuser-menu h2 {
-    font-family: var(--secondary-font);
-    text-align: center;
-    margin: 2rem 0 1rem;
-    font-size: clamp(1.4rem, 4vw, 2rem);
-}
-
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.menu-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2rem;
-}
-
-.menu-table th,
-.menu-table td {
-    border: 1px solid var(--medium-grey);
-    padding: 0.5rem;
-    text-align: left;
-    word-break: break-word;
-}
-
-.menu-table th {
-    background-color: var(--dark-grey);
-    color: white;
-    font-family: var(--secondary-font);
-}
-
-.menu-table button {
-    font-family: var(--secondary-font);
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-    margin: 0 0.2rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.1s ease, background-color 0.2s ease;
-}
-
-.menu-table button:hover {
-    transform: scale(1.05);
-}
-
-.menu-table button[value="edit"] {
-    background-color: var(--medium-green);
-    color: white;
-}
-
-.menu-table button[value="delete"] {
-    background-color: rgb(214, 29, 29);
-    color: white;
-}
-
-*/
 
 
 
@@ -870,11 +838,6 @@ header .logo img {
         color: black;
     }
 
-    .best-sellers-grid img {
-        flex: 1 1 calc(50% - 1rem);
-        max-width: calc(50% - 1rem);
-    }
-
     .account-page {
         padding: 0 2.3rem 1rem;
     }
@@ -891,6 +854,7 @@ header .logo img {
 /* Media Query - Mobile <= 600px */
 
 @media (max-width: 600px) {
+
     .menu-toggle {
         display: block;
         margin-left: auto;
@@ -939,18 +903,13 @@ header .logo img {
         justify-content: space-between;
     }
 
-    .cta button {
-        min-width: 0;
-        width: 100%;
-        max-width: 200px;
-        padding: 0.25rem 0.5rem;
-        font-size: clamp(0.6rem, 2vw, 0.8rem);
-        box-sizing: border-box;
+    .best-sellers-grid {
+        grid-template-columns: 1fr;
+        /* 1 card per row */
     }
 
-    .best-sellers-grid img {
-        flex: 1 1 100%;
-        max-width: 100%;
+    .about-us p {
+        padding: 0 1rem;
     }
 
     .account-page {
@@ -961,11 +920,20 @@ header .logo img {
 
 /* Media Query - Very small screens <= 240px */
 
-@media (max-width: 240px) {
+@media (max-width: 315px) {
     .cta button {
+        min-width: 0;
         width: 100%;
-        font-size: 0.6rem;
-        padding: 0.2rem 0.4rem;
+        max-width: 200px;
+        padding: 0.25rem 0.5rem;
+        box-sizing: border-box;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    .white-section{
+        padding: 1rem;
     }
 
     .footer-grid {
