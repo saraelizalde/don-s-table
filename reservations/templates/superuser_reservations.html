@@ -10,7 +10,7 @@
 {% for message in messages %}
 <div class="messages-container">
     {% for message in messages %}
-        <div class="message {{ message.tags }}">{{ message }}</div>
+    <div class="message {{ message.tags }}">{{ message }}</div>
     {% endfor %}
 </div>
 {% endfor %}
@@ -43,6 +43,9 @@
                     <td>{{ r.guests }}</td>
                     <td>{{ r.special_requests|default:"-" }}</td>
                     <td>
+                        <a href="{% url 'edit_reservation' r.id %}">
+                            <button type="button">Edit</button>
+                        </a>
                         <form method="post" style="display:inline;">
                             {% csrf_token %}
                             <input type="hidden" name="reservation_id" value="{{ r.id }}">
@@ -85,6 +88,9 @@
                     <td>{{ r.guests }}</td>
                     <td>{{ r.special_requests|default:"-" }}</td>
                     <td>
+                        <a href="{% url 'edit_reservation' r.id %}">
+                            <button type="button">Edit</button>
+                        </a>
                         <form method="post" style="display:inline;">
                             {% csrf_token %}
                             <input type="hidden" name="reservation_id" value="{{ r.id }}">
