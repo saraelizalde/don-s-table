@@ -3,10 +3,23 @@
 {% block hero_content %}{% endblock %}
 
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="messages-container">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endif %}
+
 <section class="white-section reservation-dashboard">
     <h1>Menu Management</h1>
 
-    <p><a href="{% url 'add_menu_item' %}" class="btn" style="background-color: var(--medium-green); color: white; padding:0.5rem 1rem; border-radius:4px; text-decoration:none;">Add New Menu Item</a></p>
+    <p><a href="{% url 'add_menu_item' %}" class="btn"
+            style="background-color: var(--medium-green); color: white; padding:0.5rem 1rem; border-radius:4px; text-decoration:none;">Add
+            New Menu Item</a></p>
 
     {% if items %}
     <div class="table-responsive">
@@ -35,7 +48,8 @@
                         </form>
                         <form action="{% url 'delete_menu_item' item.id %}" method="post" style="display:inline;">
                             {% csrf_token %}
-                            <button type="submit" value="cancelled" onclick="return confirm('Are you sure you want to delete this menu item?');">Delete</button>
+                            <button type="submit" value="cancelled"
+                                onclick="return confirm('Are you sure you want to delete this menu item?');">Delete</button>
                         </form>
                     </td>
                 </tr>

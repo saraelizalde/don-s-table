@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="messages-container">
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endif %}
+
 <section class="white-section reservation-dashboard">
     <h1>Staff Reservation Management</h1>
 
