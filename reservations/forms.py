@@ -14,6 +14,7 @@ from .models import Reservation
 
 TOTAL_CAPACITY_PER_SLOT = 50
 
+
 def generate_time_choices():
     """
     Generate a list of time slots for reservations.
@@ -30,6 +31,7 @@ def generate_time_choices():
             label = t.strftime("%I:%M %p")
             times.append((t, label))
     return times
+
 
 class ReservationForm(forms.ModelForm):
     """
@@ -48,7 +50,8 @@ class ReservationForm(forms.ModelForm):
     """
     time = forms.TypedChoiceField(
         choices=[("", "-- : --")] + generate_time_choices(),
-        coerce=lambda v: datetime.datetime.strptime(v, "%H:%M:%S").time() if isinstance(v, str) else v,
+        coerce=lambda v: datetime.datetime.strptime(v, "%H:%M:%S").time()
+        if isinstance(v, str) else v,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
 
@@ -56,9 +59,12 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         fields = ['date', 'time', 'guests', 'special_requests']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'guests': forms.NumberInput(attrs={'min': 1, 'max': 14, 'class': 'form-control'}),
-            'special_requests': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
+            'date': forms.DateInput
+            (attrs={'type': 'date', 'class': 'form-control'}),
+            'guests': forms.NumberInput
+            (attrs={'min': 1, 'max': 14, 'class': 'form-control'}),
+            'special_requests': forms.Textarea
+            (attrs={'rows': 3, 'class': 'form-control'}),
         }
 
     def clean(self):
@@ -87,10 +93,13 @@ class ReservationForm(forms.ModelForm):
                     t = datetime.datetime.strptime(t, "%H:%M").time()
 
             chosen_dt = datetime.datetime.combine(d, t)
-            chosen_dt = timezone.make_aware(chosen_dt, timezone.get_current_timezone())
+            chosen_dt = timezone.make_aware(chosen_dt,
+                                            timezone.get_current_timezone())
 
             if chosen_dt < timezone.now():
-                raise forms.ValidationError("Reservation cannot be in the past.")
+                raise forms.ValidationError(
+                    "Reservation cannot be in the past."
+                    )
 
         # capacity check
         if d and t and g:
@@ -98,6 +107,8 @@ class ReservationForm(forms.ModelForm):
                         .filter(date=d, time=t)
                         .aggregate(total=Sum('guests'))['total'] or 0)
             if existing + g > TOTAL_CAPACITY_PER_SLOT:
-                raise forms.ValidationError("Not enough availability for that time slot.")
+                raise forms.ValidationError(
+                    "Not enough availability for that time slot."
+                    )
 
         return cleaned

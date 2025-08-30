@@ -4,6 +4,7 @@ from django.test import TestCase
 from .models import MenuItem
 from .forms import MenuItemForm
 
+
 class TestMenuCRUDViews(TestCase):
 
     def setUp(self):
@@ -43,7 +44,8 @@ class TestMenuCRUDViews(TestCase):
     def test_edit_menu_item_view_get(self):
         """GET request renders the edit form prefilled."""
         self.client.login(username='admin', password='adminpass')
-        response = self.client.get(reverse('edit_menu_item', args=[self.item.id]))
+        response = self.client.get(reverse('edit_menu_item',
+                                           args=[self.item.id]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'menu_item_form.html')
         self.assertIsInstance(response.context['form'], MenuItemForm)
@@ -67,6 +69,7 @@ class TestMenuCRUDViews(TestCase):
     def test_delete_menu_item_view(self):
         """POST request deletes a menu item."""
         self.client.login(username='admin', password='adminpass')
-        response = self.client.post(reverse('delete_menu_item', args=[self.item.id]))
+        response = self.client.post(reverse('delete_menu_item',
+                                            args=[self.item.id]))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(MenuItem.objects.filter(id=self.item.id).exists())

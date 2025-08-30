@@ -5,6 +5,7 @@ from datetime import date, time, timedelta
 from .models import Reservation
 from .forms import ReservationForm
 
+
 class TestReservationViews(TestCase):
 
     def setUp(self):
@@ -60,7 +61,8 @@ class TestReservationViews(TestCase):
     # Tests for edit_reservation
     def test_edit_reservation_get_request(self):
         self.client.login(username="regular_user", password="password123")
-        response = self.client.get(reverse("edit_reservation", args=[self.reservation.id]))
+        response = self.client.get(reverse("edit_reservation",
+                                           args=[self.reservation.id]))
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.context["form"], ReservationForm)
 
@@ -72,7 +74,8 @@ class TestReservationViews(TestCase):
             "guests": self.reservation.guests,
             "special_requests": "Updated request"
         }
-        response = self.client.post(reverse("edit_reservation", args=[self.reservation.id]), data)
+        response = self.client.post(reverse("edit_reservation",
+                                            args=[self.reservation.id]), data)
         updated = Reservation.objects.get(id=self.reservation.id)
         self.assertEqual(updated.status, "pending")
         self.assertEqual(updated.special_requests, "Updated request")
@@ -81,9 +84,12 @@ class TestReservationViews(TestCase):
     # Tests for cancel_reservation
     def test_cancel_reservation_post(self):
         self.client.login(username="regular_user", password="password123")
-        response = self.client.post(reverse("cancel_reservation", args=[self.reservation.id]))
+        response = self.client.post(reverse("cancel_reservation",
+                                            args=[self.reservation.id]))
         self.assertRedirects(response, reverse("reservation_dashboard"))
-        self.assertFalse(Reservation.objects.filter(id=self.reservation.id).exists())
+        self.assertFalse(
+            Reservation.objects.filter(id=self.reservation.id).exists()
+            )
 
     # Tests for superuser_reservations
     def test_superuser_reservations_accessible_for_superuser(self):

@@ -16,6 +16,7 @@ STATUS_CHOICES = [
         ("cancelled", "Cancelled"),
     ]
 
+
 class Reservation(models.Model):
     """
     Represents a table reservation made by a user.
@@ -24,14 +25,17 @@ class Reservation(models.Model):
         user (User): The user who made the reservation.
         date (date): Date of the reservation.
         time (time): Start time of the reservation.
-        end_time (time): Automatically calculated end time (1 hour after start).
+        end_time (time):
+        Automatically calculated end time (1 hour after start).
         guests (int): Number of guests (1–14).
         special_requests (str): Optional notes or special requests.
         created_on (datetime): Timestamp when the reservation was created.
-        status (str): Current status of the reservation (pending, confirmed, cancelled).
+        status (str): Current status of the reservation
+        (pending, confirmed, cancelled).
 
     Methods:
-        save(*args, **kwargs): Overrides save to calculate end_time automatically.
+        save(*args, **kwargs):
+        Overrides save to calculate end_time automatically.
         __str__(): Returns a human-readable string representation.
 
     Meta:
@@ -51,7 +55,6 @@ class Reservation(models.Model):
         choices=STATUS_CHOICES,
         default="pending",
         )
-    
 
     def save(self, *args, **kwargs):
         """
@@ -60,12 +63,17 @@ class Reservation(models.Model):
         End time is calculated as one hour after the start time.
         """
         if self.time:
-            self.end_time = (datetime.combine(self.date, self.time) + timedelta(hours=1)).time()
+            self.end_time = (
+                datetime.combine(self.date, self.time) + timedelta(hours=1)
+                ).time()
         super().save(*args, **kwargs)
 
     def __str__(self):
         """Return a string for the reservation."""
-        return f"Reservation for {self.user.username} on {self.date} at {self.time}"
-    
+        return (
+            f"Reservation for {self.user.username} "
+            f"on {self.date} at {self.time}"
+        )
+
     class Meta:
         ordering = ['date', 'time']

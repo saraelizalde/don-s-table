@@ -6,14 +6,16 @@ from .forms import ReservationForm
 from .models import Reservation
 from django.db.models import Sum
 
+
 class TestReservationForm(TestCase):
     """
     Tests for ReservationForm validation and logic.
     """
 
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="password")
-        
+        self.user = User.objects.create_user(username="testuser",
+                                             password="password")
+
         # Create an existing reservation for capacity testing
         self.existing_reservation = Reservation.objects.create(
             user=self.user,
@@ -33,11 +35,13 @@ class TestReservationForm(TestCase):
             'special_requests': 'Window seat'
         }
         form = ReservationForm(data=form_data)
-        self.assertTrue(form.is_valid(), msg="Form should be valid with correct data")
+        self.assertTrue(form.is_valid(),
+                        msg="Form should be valid with correct data")
 
     def test_form_invalid_past_date(self):
         """
-        The form should be invalid if the reservation date/time is in the past.
+        The form should be invalid if the reservation
+        date/time is in the past.
         """
         past_date = date.today() - timedelta(days=1)
         form_data = {
@@ -46,11 +50,13 @@ class TestReservationForm(TestCase):
             'guests': 2,
         }
         form = ReservationForm(data=form_data)
-        self.assertFalse(form.is_valid(), msg="Form is valid with past date")
+        self.assertFalse(form.is_valid(),
+                         msg="Form is valid with past date")
 
     def test_form_invalid_over_capacity(self):
         """
-        The form should be invalid if adding guests exceeds TOTAL_CAPACITY_PER_SLOT.
+        The form should be invalid if adding guests
+        exceeds TOTAL_CAPACITY_PER_SLOT.
         """
         form_data = {
             'date': self.existing_reservation.date,
@@ -58,7 +64,8 @@ class TestReservationForm(TestCase):
             'guests': 25,
         }
         form = ReservationForm(data=form_data)
-        self.assertFalse(form.is_valid(), msg="Form is valid even though it exceeds capacity")
+        self.assertFalse(form.is_valid(),
+                         msg="Form is valid even though it exceeds capacity")
 
     def test_form_invalid_missing_time(self):
         """
@@ -69,7 +76,8 @@ class TestReservationForm(TestCase):
             'guests': 4,
         }
         form = ReservationForm(data=form_data)
-        self.assertFalse(form.is_valid(), msg="Form is valid even though time is missing")
+        self.assertFalse(form.is_valid(),
+                         msg="Form is valid even though time is missing")
 
     def test_form_invalid_missing_guests(self):
         """
@@ -80,7 +88,9 @@ class TestReservationForm(TestCase):
             'time': time(19, 0),
         }
         form = ReservationForm(data=form_data)
-        self.assertFalse(form.is_valid(), msg="Form is valid even though guests number is missing")
+        self.assertFalse(form.is_valid(),
+                         msg="Form is valid even though guests number"
+                         "is missing")
 
     def test_form_invalid_too_many_guests(self):
         """
@@ -93,4 +103,5 @@ class TestReservationForm(TestCase):
             'special_requests': 'Extra chairs'
         }
         form = ReservationForm(data=form_data)
-        self.assertFalse(form.is_valid(), msg="Form is valid even though guests exceed 14")
+        self.assertFalse(form.is_valid(),
+                         msg="Form is valid even though guests exceed 14")

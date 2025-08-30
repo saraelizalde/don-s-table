@@ -1,10 +1,12 @@
 """
 Models for the Menu app.
 
-Defines the MenuItem model representing individual menu items in the restaurant.
+Defines the MenuItem model representing individual menu items
+in the restaurant.
 """
 
 from django.db import models
+
 
 class MenuItem(models.Model):
     """
@@ -27,7 +29,10 @@ class MenuItem(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
-        """Return a string representation including name and price with 2 decimals."""
+        """
+        Return a string representation including name
+        and price with 2 decimals.
+        """
         return f"{self.name} - {self.price:.2f}€"
 
     class Meta:

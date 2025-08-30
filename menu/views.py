@@ -11,6 +11,7 @@ from .forms import MenuItemForm
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 
+
 def my_menu(request):
     """
     Display the menu page with available items grouped by category.
@@ -21,14 +22,17 @@ def my_menu(request):
         menu.html
     """
     categories = ["starter", "main", "dessert", "drink"]
-    menu_items = {cat: MenuItem.objects.filter(category=cat, available=True) for cat in categories}
+    menu_items = {cat: MenuItem.objects.filter(category=cat, available=True)
+                  for cat in categories}
     return render(request, "menu.html", {"menu_items": menu_items})
+
 
 def superuser_required(view_func):
     """
     Decorator to restrict access to superusers only.
     """
     return user_passes_test(lambda u: u.is_superuser)(view_func)
+
 
 @superuser_required
 def superuser_menu(request):
@@ -44,6 +48,7 @@ def superuser_menu(request):
     """
     items = MenuItem.objects.all().order_by('category', 'name')
     return render(request, 'superuser_menu.html', {'items': items})
+
 
 @superuser_required
 def add_menu_item(request):
@@ -65,7 +70,9 @@ def add_menu_item(request):
             return redirect('superuser_menu')
     else:
         form = MenuItemForm()
-    return render(request, 'menu_item_form.html', {'form': form, 'title': 'Add Menu Item'})
+    return render(request, 'menu_item_form.html',
+                  {'form': form, 'title': 'Add Menu Item'})
+
 
 @superuser_required
 def edit_menu_item(request, item_id):
@@ -91,7 +98,9 @@ def edit_menu_item(request, item_id):
             return redirect('superuser_menu')
     else:
         form = MenuItemForm(instance=item)
-    return render(request, 'menu_item_form.html', {'form': form, 'title': 'Edit Menu Item'})
+    return render(request, 'menu_item_form.html',
+                  {'form': form, 'title': 'Edit Menu Item'})
+
 
 @superuser_required
 def delete_menu_item(request, item_id):

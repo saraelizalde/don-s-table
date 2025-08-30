@@ -2,6 +2,7 @@ from django import forms
 from .models import MenuItem
 from django.core.validators import MinValueValidator
 
+
 class MenuItemForm(forms.ModelForm):
     """
     Form for creating or editing a MenuItem.
@@ -27,7 +28,9 @@ class MenuItemForm(forms.ModelForm):
         fields = ['name', 'description', 'price', 'category', 'available']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'description':
+            forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'category': forms.Select(attrs={'class': 'form-control'}),
-            'available': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'available':
+            forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }

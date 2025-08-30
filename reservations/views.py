@@ -19,6 +19,7 @@ from .forms import ReservationForm
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 
+
 @login_required
 def reservation_dashboard(request):
     """
@@ -34,7 +35,9 @@ def reservation_dashboard(request):
         user=request.user,
         date__gte=today
     ).order_by('date', 'time')
-    return render(request, 'reservation_dashboard.html', {'reservations': user_reservations})
+    return render(request, 'reservation_dashboard.html',
+                  {'reservations': user_reservations})
+
 
 @login_required
 def make_reservation(request):
@@ -59,11 +62,18 @@ def make_reservation(request):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.save()
-            messages.success(request, "Your reservation has been submitted and is pending confirmation.")
+            messages.success(
+                request,
+                (
+                    "Your reservation has been "
+                    "submitted and is pending confirmation."
+                )
+            )
             return redirect('reservation_dashboard')
     else:
         form = ReservationForm()
     return render(request, 'reservation_form.html', {'form': form})
+
 
 @login_required
 def edit_reservation(request, reservation_id):
@@ -83,21 +93,29 @@ def edit_reservation(request, reservation_id):
     if request.user.is_superuser:
         reservation = get_object_or_404(Reservation, id=reservation_id)
     else:
-        reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+        reservation = get_object_or_404(Reservation, id=reservation_id,
+                                        user=request.user)
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            if form.has_changed():  # Only reset status if something actually changed
+            if form.has_changed():  # Only reset status if something changed
                 updated = form.save(commit=False)
                 updated.status = "pending"
                 updated.save()
-                messages.success(request, "Your reservation has been updated and is pending confirmation.")
+                messages.success(
+                    request,
+                    (
+                        "Your reservation has been updated and is "
+                        "pending confirmation."
+                    ),
+                )
             else:
                 form.save()  # No changes -> just save without resetting status
             return redirect("reservation_dashboard")
     else:
         form = ReservationForm(instance=reservation)
     return render(request, 'reservation_form.html', {'form': form})
+
 
 @login_required
 def cancel_reservation(request, reservation_id):
@@ -113,7 +131,8 @@ def cancel_reservation(request, reservation_id):
     Redirects:
         reservation_dashboard
     """
-    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    reservation = get_object_or_404(Reservation,
+                                    id=reservation_id, user=request.user)
     if request.method == "POST":
         reservation.delete()
         messages.success(request, "Reservation cancelled successfully.")
@@ -130,9 +149,21 @@ def superuser_reservations(request):
     in chronological order. Superusers can change the status of reservations
     and see special requests.
     """
-    reservations_pending = Reservation.objects.filter(status="pending").order_by("date", "time")
-    reservations_confirmed = Reservation.objects.filter(status="confirmed").order_by("date", "time")
-    reservations_cancelled = Reservation.objects.filter(status="cancelled").order_by("date", "time")
+    reservations_pending = (
+        Reservation.objects
+        .filter(status="pending")
+        .order_by("date", "time")
+    )
+    reservations_confirmed = (
+        Reservation.objects
+        .filter(status="confirmed")
+        .order_by("date", "time")
+    )
+    reservations_cancelled = (
+        Reservation.objects
+        .filter(status="cancelled")
+        .order_by("date", "time")
+    )
 
     if request.method == "POST":
         res_id = request.POST.get("reservation_id")
@@ -141,7 +172,8 @@ def superuser_reservations(request):
         if reservation:
             reservation.status = new_status
             reservation.save()
-            messages.success(request, f"Reservation status updated to {new_status}.")
+            messages.success(request,
+                             f"Reservation status updated to {new_status}.")
             return redirect("superuser_reservations")
 
     return render(

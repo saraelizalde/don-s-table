@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def home(request):
     """
     Render the home page of Don's Table.
@@ -7,6 +8,7 @@ def home(request):
         base.html
     """
     return render(request, 'base.html')
+
 
 def contact(request):
     """

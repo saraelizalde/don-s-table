@@ -1,6 +1,7 @@
 from django.test import TestCase
 from menu.forms import MenuItemForm
 
+
 class TestMenuItemForm(TestCase):
 
     def test_form_is_valid(self):
@@ -49,6 +50,5 @@ class TestMenuItemForm(TestCase):
             'available': True
         }
         form = MenuItemForm(data=form_data)
-        self.assertFalse(form.is_valid(), msg='Form is valid with negative price')
-
-  
+        self.assertFalse(form.is_valid(),
+                         msg='Form is valid with negative price')
