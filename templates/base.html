@@ -1,8 +1,8 @@
 {% load static %}
+
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -183,8 +183,6 @@
                 <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
                 <p><a href="mailto:donstable@email.example">donstable@email.example</a></p>
             </div>
-
-
         </div>
 
         <div class="subfooter">
@@ -194,6 +192,5 @@
 
     <script src="{% static 'js/script.js' %}"></script>
 </body>
-
 
 </html>
