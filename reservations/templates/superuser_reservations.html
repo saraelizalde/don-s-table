@@ -7,13 +7,11 @@
 {% block content %}
 
 {% if messages %}
-{% for message in messages %}
 <div class="messages-container">
     {% for message in messages %}
     <div class="message {{ message.tags }}">{{ message }}</div>
     {% endfor %}
 </div>
-{% endfor %}
 {% endif %}
 
 <section class="white-section reservation-dashboard">
@@ -43,10 +41,8 @@
                     <td>{{ r.guests }}</td>
                     <td>{{ r.special_requests|default:"-" }}</td>
                     <td>
-                        <a href="{% url 'edit_reservation' r.id %}">
-                            <button type="button">Edit</button>
-                        </a>
-                        <form method="post" style="display:inline;">
+                        <a href="{% url 'edit_reservation' r.id %}" class="reservation-btn edit-btn">Edit</a>
+                        <form method="post" class="reservation-form">
                             {% csrf_token %}
                             <input type="hidden" name="reservation_id" value="{{ r.id }}">
                             <button type="submit" name="status" value="confirmed"
@@ -88,10 +84,8 @@
                     <td>{{ r.guests }}</td>
                     <td>{{ r.special_requests|default:"-" }}</td>
                     <td>
-                        <a href="{% url 'edit_reservation' r.id %}">
-                            <button type="button">Edit</button>
-                        </a>
-                        <form method="post" style="display:inline;">
+                        <a href="{% url 'edit_reservation' r.id %}" class="reservation-btn edit-btn">Edit</a>
+                        <form method="post" class="reservation-form">
                             {% csrf_token %}
                             <input type="hidden" name="reservation_id" value="{{ r.id }}">
                             <button type="submit" name="status" value="cancelled"

@@ -86,23 +86,23 @@
                 From handcrafted pastas to hearty classics, we bring the taste of old-school comfort to your table.<br>
                 Book your reservation and experience the heart of Italian-American dining.</p>
         </section>
-        <section class="hero cta">
+        <div class="hero cta">
             {% if user.is_authenticated %}
-            <a href="{% url 'make_reservation' %}">
-                <button>Book a Table</button>
+            <a href="{% url 'make_reservation' %}" class="button-link">
+                Book a Table
             </a>
-            <a href="{% url 'reservation_dashboard' %}">
-                <button>See My Reservations</button>
+            <a href="{% url 'reservation_dashboard' %}" class="button-link">
+                See My Reservations
             </a>
             {% else %}
-            <a href="{% url 'account_signup' %}">
-                <button>Register to Book a Table</button>
+            <a href="{% url 'account_signup' %}" class="button-link">
+                Register to Book a Table
             </a>
-            <a href="{% url 'account_login' %}">
-                <button>Login to Book a Table</button>
+            <a href="{% url 'account_login' %}" class="button-link">
+                Login to Book a Table
             </a>
             {% endif %}
-        </section>
+        </div>
         {% endblock %}
     </div>
 

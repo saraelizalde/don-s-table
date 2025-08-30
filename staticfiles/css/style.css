@@ -203,8 +203,10 @@ header .logo img {
     text-align: center;
 }
 
-.cta button {
+.cta .button-link {
     font-family: var(--secondary-font);
+    display: inline-block;
+    text-decoration: none;
     font-size: 1.1rem;
     padding: 1rem 2rem;
     margin: 0.5rem;
@@ -221,7 +223,7 @@ header .logo img {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.cta button:hover {
+.cta button-link:hover {
     transform: scale(1.05);
     background: rgba(255, 255, 255, 0.3);
 }
@@ -478,6 +480,8 @@ header .logo img {
     padding-left: 0;
     margin-left: 0;
     text-align: center;
+    display: inline-block;
+    padding-top: 2rem;
 }
 
 .account-page button {
@@ -758,7 +762,8 @@ header .logo img {
     font-family: var(--secondary-font);
 }
 
-.reservation-table button {
+.reservation-table button,
+.reservation-btn {
     font-family: var(--secondary-font);
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
@@ -767,9 +772,11 @@ header .logo img {
     border-radius: 4px;
     cursor: pointer;
     transition: transform 0.1s ease, background-color 0.2s ease;
+    text-decoration: none;
 }
 
-.reservation-table button:hover {
+.reservation-table button:hover,
+.reservation-btn:hover {
     transform: scale(1.05);
 }
 
@@ -788,6 +795,20 @@ header .logo img {
     color: white;
 }
 
+.reservation-btn.edit-btn {
+    background-color: var(--primary-blue);
+    color: #333;
+    background-color: rgb(200, 200, 220) ;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block; /* ensure it's visible */
+}
+
+.reservation-form {
+    display: inline-block;
+    margin: 0;
+}
 
 
 
@@ -970,7 +991,7 @@ header .logo img {
 /* Media Query - Very small screens <= 240px */
 
 @media (max-width: 315px) {
-    .cta button {
+    .cta .button-link {
         min-width: 0;
         width: 100%;
         max-width: 200px;

@@ -27,7 +27,7 @@
 
   <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_ul }}
 
     {% if form.non_field_errors %}
     <div class="form-errors">
