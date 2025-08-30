@@ -397,6 +397,7 @@ header .logo img {
 
 .account-h1 h1 {
     font-family: var(--secondary-font);
+    color: var(--hot-red);
     font-weight: 300;
     margin-bottom: 2rem;
     font-size: clamp(1.5rem, 8vw, 5rem);
@@ -480,7 +481,7 @@ header .logo img {
     padding-left: 0;
     margin-left: 0;
     text-align: center;
-    display: inline-block;
+    display: block;
     padding-top: 2rem;
 }
 
