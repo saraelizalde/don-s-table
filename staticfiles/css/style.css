@@ -20,8 +20,10 @@
 
 
 
-/* Base Styles */
 
+
+
+/* Base Styles */
 body {
     margin: 0;
     font-family: var(--primary-font);
@@ -43,9 +45,13 @@ h2 {
 }
 
 section h1,
+section * h1,
 article h1,
+article * h1,
 nav h1,
-aside h1 {
+nav * h1,
+aside h1,
+aside * h1 {
   font-size: 2rem;
   font-weight: 300;
 }
@@ -124,7 +130,6 @@ aside h1 {
 
 
 /* Hero-wrapper*/
-
 .hero-wrapper {
     background-image: url('../images/hero-image.jpg');
     background-size: cover;
@@ -192,7 +197,6 @@ header .logo img {
 }
 
 /* Hero section and introduction*/
-
 .hero h1 {
     font-family: var(--accent-font);
     font-weight: 300;
@@ -210,7 +214,6 @@ header .logo img {
 }
 
 /* Call to Action Buttons */
-
 .cta {
     padding: 2rem;
     text-align: center;
@@ -251,7 +254,6 @@ header .logo img {
 
 
 /* Main */
-
 .white-section {
     background: white;
     padding: 2rem;
@@ -321,7 +323,6 @@ header .logo img {
 
 
 /*Menu Page*/
-
 .menu-page {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -400,7 +401,6 @@ header .logo img {
 
 
 /*Account Pages*/
-
 .account-page {
     font-family: var(--primary-font);
     padding: 0 4rem 2rem;
@@ -733,7 +733,6 @@ header .logo img {
 
 
 /*Superuser Dashboard Reservation and Dashboard*/
-
 .reservation-dashboard h1 {
     font-family: var(--accent-font);
     font-weight: 300;
@@ -925,7 +924,6 @@ header .logo img {
 
 
 /* Media Query - Tablet <= 768px */
-
 @media (max-width: 768px) {
     header {
         background: white;
@@ -972,7 +970,6 @@ header .logo img {
 }
 
 /* Media Query - Mobile <= 600px */
-
 @media (max-width: 600px) {
 
     .menu-toggle {
@@ -1054,7 +1051,6 @@ header .logo img {
 }
 
 /* Media Query - Very small screens <= 240px */
-
 @media (max-width: 315px) {
 
 
