@@ -816,12 +816,31 @@ header .logo img {
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
     text-decoration: none;
-    display: inline-block; /* ensure it's visible */
+    display: inline-block;
 }
 
 .reservation-form {
     display: inline-block;
     margin: 0;
+}
+
+.menu-form {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.menu-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    min-height: 25px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--medium-green);
+    color: white;
 }
 
 
@@ -933,6 +952,23 @@ header .logo img {
         margin: 0 auto;
         width: 100%;
     }
+
+        .table-responsive {
+        overflow-x: auto;     /* enable horizontal scroll */
+        -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    }
+
+    .reservation-table {
+        width: 100%;          /* full width */
+        border-collapse: collapse;
+        font-size: 0.9rem;    /* slightly smaller text */
+    }
+
+    .reservation-table th,
+    .reservation-table td {
+        padding: 0.5rem;      /* tighter spacing */
+        white-space: nowrap;  /* prevent text wrapping that breaks layout */
+    }
 }
 
 /* Media Query - Mobile <= 600px */
@@ -1000,21 +1036,27 @@ header .logo img {
         padding: 0 1.5rem 1rem;
     }
 
+    .cta .button-link {
+        min-width: 0;
+        width: 100%;
+        max-width: 200px;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        display: inline-flex;
+        justify-content: center;
+        min-height: 50px;
+        text-align: center;
+    }
+
 }
 
 /* Media Query - Very small screens <= 240px */
 
 @media (max-width: 315px) {
-    .cta .button-link {
-        min-width: 0;
-        width: 100%;
-        max-width: 200px;
-        padding: 0.25rem 0.5rem;
-        box-sizing: border-box;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
-    }
+
 
     .white-section{
         padding: 1rem;
