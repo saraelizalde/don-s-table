@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // Toggle mobile navigation menu when hamburger button is clicked
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
